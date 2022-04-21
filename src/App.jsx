@@ -13,11 +13,6 @@ import VIDEO from './assets/videoplayback.mp4'
 const App = () => {
     return (
         <>
-            <video loop autoPlay id='video'>
-                <source src={VIDEO} type="video/mp4"
-                />
-                Your browser does not support the video tag.
-            </video>
             <Header />
             <Nav />
             <About />
