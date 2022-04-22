@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import "./about.css"
 // import ME from "../../assets/me-about.jpg"
 import {FaAward} from 'react-icons/fa'
 import {FiUsers} from 'react-icons/fi'
 import {VscFolderLibrary} from 'react-icons/vsc'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const About = () => {
+  
+  useEffect(()=>{
+      Aos.init({duration: 2000});
+  }, []);
+
   return (
-    <section id='about'>
+    <section data-aos="fade-up" id='about'>
       <h5>Get To Know</h5>
       <h2>About Me</h2>
 
@@ -20,19 +27,19 @@ const About = () => {
 
         <div className="about__content">
           <div className="about__cards">
-            <article className='about__card'>
+            <article data-aos="flip-right" className='about__card'>
               <FaAward className='about__icon'/>
               <h5>Experience</h5>
               <small>1 year in Game Development</small>
             </article>
 
-            <article className='about__card'>
+            <article className='about__card' data-aos="flip-right">
               <FiUsers className='about__icon'/>
               <h5>Ckients</h5>
               <small>200+ Worldwide</small>
             </article>
 
-            <article className='about__card'>
+            <article className='about__card' data-aos="flip-right">
               <VscFolderLibrary className='about__icon'/>
               <h5>Projects</h5>
               <small>80+ Completed</small>

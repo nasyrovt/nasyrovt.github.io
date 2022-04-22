@@ -8,9 +8,10 @@ import Nav from './components/nav/Nav'
 import Portfolio from './components/portfolio/Portfolio'
 import Services from './components/services/Services'
 import Testimonials from './components/testimonials/Testimonials'
-import VIDEO from './assets/videoplayback.mp4'
+
 
 const App = () => {
+    
     return (
         <>
             <Header />
