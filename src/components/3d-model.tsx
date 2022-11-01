@@ -79,7 +79,9 @@ const ThreeDModel = () => {
   const isStrange = mode === `strangerThings`
   const standardColor = isStrange ? `#E7251D` : `#663399`
 
-  return (
+  // @ts-ignore
+    // @ts-ignore
+    return (
     <div
       sx={{
         width: `550px`,
@@ -114,6 +116,7 @@ const ThreeDModel = () => {
         <Suspense fallback={null}>
           <Model position={[0, -50, 0]} />
         </Suspense>
+          {/* @ts-ignore - Weird Type error*/}
         <Shadow
           color="#000"
           fog={false}
