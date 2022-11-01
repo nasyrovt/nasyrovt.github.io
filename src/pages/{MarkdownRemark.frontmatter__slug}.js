@@ -15,7 +15,10 @@ export default function BlogPostTemplate({data: {markdownRemark}}) {
                     <h1 sx={(t) => get(t, `styles.h1`)}>{frontmatter.title}</h1>
                     <Themed.p>{frontmatter.stack}</Themed.p>
                     <img src={frontmatter.image} alt="Project"></img>
-                    <div className="post-body" dangerouslySetInnerHTML={{__html: html}}/>
+                    {/*<div className="post-body" dangerouslySetInnerHTML={{__html: html}}/>*/}
+                    <div>
+                        <Themed.p>{html}</Themed.p>
+                    </div>
                 </div>
             </Container>
             <Circle size={[`200px`, `200px`, `300px`]} color="red" top="-75px" right="5px" />
