@@ -1,6 +1,6 @@
 ---
 title: "Planet Assault"
-slug: "planet-assault"
+slug: "/planet-assault"
 image: "../public/portfolio1.jpeg"
 stack: "Unity / C#" 
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Pad Break"
-slug: "pad-break"
+slug: "/pad-break"
 image: "../public/portfolio1.jpeg"
 stack: "Unity / C#" 
 ---
