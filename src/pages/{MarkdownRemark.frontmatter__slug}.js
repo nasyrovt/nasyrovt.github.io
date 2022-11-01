@@ -55,7 +55,6 @@ export default function BlogPostTemplate({data: {markdownRemark}}) {
                 sx={{ zIndex: 10 }}
             />
             <Donut color="pink" size={[`300px`, `340px`]} top="550px" width="40px" left="160px" sx={{ opacity: 0.35 }} />
-            <CircleGrid color="blue" size={260} top="-20px" left={[`-180px`, `-120px`, `-120px`]} />
         </section>
     );
 }
