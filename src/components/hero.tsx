@@ -37,6 +37,7 @@ const Hero = () => {
     }
   `)
   const starsCount = data?.githubData?.data?.repository?.stargazers?.totalCount
+    console.log(data);
 
   return (
     <div>
