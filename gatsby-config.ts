@@ -33,22 +33,22 @@ const config: GatsbyConfig = {
       },
     },
     `gatsby-transformer-remark`,
-    // githubToken && {
-    //   resolve: `gatsby-source-github-api`,
-    //   options: {
-    //     token: githubToken,
-    //     variables: {},
-    //     graphQLQuery: `
-    //       query {
-    //         repository(owner: "LekoArts", name: "gatsby-themes") {
-    //           stargazers {
-    //             totalCount
-    //           }
-    //         }
-    //       }
-    //     `,
-    //   },
-    // },
+    githubToken && {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        token: githubToken,
+        variables: {},
+        graphQLQuery: `
+          query {
+            repository(owner: "nasyrovt", name: "React-portfolio") {
+              stargazers {
+                totalCount
+              }
+            }
+          }
+        `,
+      },
+    },
     // googleTagId && {
     //   resolve: `gatsby-plugin-google-gtag`,
     //   options: {
