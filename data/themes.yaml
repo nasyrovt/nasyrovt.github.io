@@ -53,10 +53,10 @@
       yOffset: ["-40px", "-70px"]
       opacity: 1
 #- title: "Specimens"
-#  url: "https://github.com/LekoArts/gatsby-starter-specimens"
-#  preview: "https://specimens.lekoarts.de"
-#  description: "Leverage the wide variety of powerful React components to build your design system."
-#  image: "./specimens.jpg"
+#  url: ""
+#  preview: ""
+#  description: ""
+#  image: ""
 #  shapes:
 #    - type: "circle"
 #      color: "red"
@@ -76,11 +76,11 @@
 #      xOffset: ["300px", "600px", "280px", "400px"]
 #      yOffset: ["-40px", "-60px"]
 #      opacity: 1
-#- title: "Emilia"
-#  url: "https://github.com/LekoArts/gatsby-starter-portfolio-emilia"
-#  preview: "https://emilia.lekoarts.de"
-#  description: "Portfolio/photography site with masonry grid, page transitions and big images."
-#  image: "./emilia.png"
+#- title: ""
+#  url: ""
+#  preview: ""
+#  description: ""
+#  image: ""
 #  shapes:
 #    - type: "circle"
 #      color: "blue"
@@ -94,11 +94,11 @@
 #      xOffset: ["350px", "350px", "320px", "400px"]
 #      yOffset: ["-40px", "-70px"]
 #      opacity: 1
-#- title: "GraphQL Playground"
-#  url: "https://github.com/LekoArts/gatsby-starter-graphql-playground"
-#  preview: "https://gatsbystartergraphqlplayground.gatsbyjs.io"
-#  description: "Write queries in MDX to create an interactive GraphQL Playground to showcase the power of GraphQL."
-#  image: "./graphql-playground.png"
+#- title: ""
+#  url: ""
+#  preview: ""
+#  description: ""
+#  image: ""
 #  shapes:
 #    - type: "circle"
 #      color: "black"
@@ -112,11 +112,11 @@
 #      xOffset: ["-40px"]
 #      yOffset: ["-60px"]
 #      opacity: 1
-#- title: "Minimal Blog"
-#  url: "https://github.com/LekoArts/gatsby-starter-minimal-blog"
-#  preview: "https://minimal-blog.lekoarts.de"
-#  description: "Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks."
-#  image: "./minimal-blog.png"
+#- title: ""
+#  url: ""
+#  preview: ""
+#  description: ""
+#  image: ""
 #  shapes:
 #    - type: "donut"
 #      color: "purple"
@@ -124,11 +124,11 @@
 #      xOffset: ["-40px", "-60px"]
 #      yOffset: ["-40px", "-60px"]
 #      opacity: 1
-#- title: "Styleguide"
-#  url: "https://github.com/LekoArts/gatsby-starter-styleguide"
-#  preview: "https://theme-ui-styleguide.netlify.com"
-#  description: "Instantly create a styleguide page based on your Theme UI configuration. Zero-config."
-#  image: "./styleguide.png"
+#- title: ""
+#  url: ""
+#  preview: ""
+#  description: ""
+#  image: ""
 #  shapes:
 #    - type: "circle"
 #      color: "pink"
@@ -136,11 +136,11 @@
 #      xOffset: ["-40px", "-60px"]
 #      yOffset: ["-40px", "-60px"]
 #      opacity: 1
-#- title: "Jodie"
-#  url: "https://github.com/LekoArts/gatsby-starter-portfolio-jodie"
-#  preview: "https://jodie.lekoarts.de"
-#  description: "Image-heavy photography portfolio with colorful accents & customizable pages. Includes adaptive image grids powered by CSS grid and automatic image integration into projects."
-#  image: "./jodie.png"
+#- title: ""
+#  url: ""
+#  preview: ""
+#  description: ""
+#  image: ""
 #  shapes:
 #    - type: "circle"
 #      color: "blue"
