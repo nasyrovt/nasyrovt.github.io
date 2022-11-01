@@ -114,7 +114,6 @@ const ThreeDModel = () => {
         <Suspense fallback={null}>
           <Model position={[0, -50, 0]} />
         </Suspense>
-        {/* @ts-ignore - Some weird type thing*/}
         <Shadow
           color="#000"
           fog={false}
