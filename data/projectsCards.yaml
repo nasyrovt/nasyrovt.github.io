@@ -1,6 +1,6 @@
 - title: "Pad Break"
   url: "https://github.com/nasyrovt/PadBreak_RecimTestTechnique"
-  preview: "/projects/1/"
+  preview: "/pad-break/"
   description: "Mobile hyper casual game where you have to adapt to color changes in order to survive."
   image: "./emma.png"
   shapes:
@@ -18,7 +18,7 @@
       opacity: 1
 - title: "Planet Assault"
   url: "https://github.com/nasyrovt/Unity3D-PlanetAssault"
-  preview: "/projects/2/"
+  preview: "/planet-assault/"
   description: "Timeline score-runner game. You have to defend the planet from invaders."
   image: "./status-dashboard.png"
   shapes:
@@ -36,7 +36,7 @@
       opacity: 1
 - title: "Simple Shooter"
   url: "https://github.com/nasyrovt/UnrealEngine_SimpleShooter"
-  preview: "/projects/3/"
+  preview: "/simple-shooter/"
   description: "Third person shooter game with AAA assets from Unreal Engine Marketplace. TPS gameplay with AI to play against. (Part of my self-education)>"
   image: "./cara.jpg"
   shapes:
