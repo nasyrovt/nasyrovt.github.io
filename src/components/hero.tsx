@@ -55,7 +55,7 @@ const Hero = () => {
             </Box>
             <Box>
               <a
-                href="https://github.com/LekoArts/gatsby-themes"
+                href="https://github.com/nasyrovt/React-portfolio"
                 rel="noopener noreferrer"
                 target="_blank"
                 sx={{
