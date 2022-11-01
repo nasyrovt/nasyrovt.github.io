@@ -1,8 +1,9 @@
 # dependencies
 /node_modules
+/public
 /.pnp
 .pnp.js
-.cache/*
+/.cache/*
 .idea
 
 # testing

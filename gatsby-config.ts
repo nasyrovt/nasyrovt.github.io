@@ -22,14 +22,14 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: path.resolve(`data`),
+        path: path.resolve(`data`), // First approach to give absolute path
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
-        path: `${__dirname}/src/markdown`,
+        path: `${__dirname}/src/markdown`, // Second approach to give absolute path
       },
     },
     `gatsby-transformer-remark`,
