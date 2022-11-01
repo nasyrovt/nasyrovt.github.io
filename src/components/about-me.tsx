@@ -119,7 +119,7 @@ const AboutMe = () => {
             <a href="https://patreon.com/user?u=82048251" sx={{ variant: `buttons.white` }}>
               Patreon
             </a>
-            <a href="https://ko-fi.com/N4N0W91I" sx={{ variant: `buttons.white` }}>
+            <a href="https://ko-fi.com/taktakgamedev" sx={{ variant: `buttons.white` }}>
               Buy me a tea
             </a>
           </Flex>
