@@ -78,7 +78,7 @@ const ThreeDModel = () => {
 
   const isStrange = mode === `strangerThings`
   const standardColor = isStrange ? `#E7251D` : `#663399`
-    
+
     return (
     <div
       sx={{
