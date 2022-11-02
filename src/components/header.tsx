@@ -2,7 +2,7 @@
 import { Container, jsx, Flex, Box, useColorMode } from "theme-ui"
 import ThemeSwitch from "../icons/theme-switch"
 // @ts-ignore
-import LOGO from "../../public/Logo.png"
+import LOGO from "../../static/Logo.png"
 
 const modes = [`light`, `dark`, `strangerThings`]
 

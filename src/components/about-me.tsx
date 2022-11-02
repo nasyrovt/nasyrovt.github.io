@@ -4,7 +4,7 @@ import {Themed} from "@theme-ui/mdx"
 import {Circle, Donut} from "./shapes"
 import {down, upWide} from "../styles/animations"
 // @ts-ignore
-import UE from "../../public/unreal.png"
+import UE from "../../static/unreal.png"
 import CircleGrid from "../icons/circle-grid"
 // @ts-ignore
 import CV from "../../public/cv.pdf"
@@ -63,7 +63,7 @@ const AboutMe = () => {
                 right={[`145px`, `145px`, `375px`]}
                 sx={{animation: `${upWide} 20s ease-in-out infinite alternate`}}
             />
-            <img src={UE} alt="Unreal Engine" sx={{
+            <img src={UE} alt="Unreal Engine" id="unreal-image" sx={{
                 width: [70, 70, 90],
                 height: [70, 70, 90],
                 top: `105px`,
