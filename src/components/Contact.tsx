@@ -1,7 +1,7 @@
 // @ts-ignore
 import React, {useRef, useEffect} from 'react'
 import emailjs from '@emailjs/browser';
-import {Box, Container, Flex, get, jsx, useColorMode} from "theme-ui";
+import {Box, Button, Container, Flex, get, Input, Label, Textarea, useColorMode} from "theme-ui";
 
 
 const Contact = () => {
@@ -55,12 +55,15 @@ const Contact = () => {
                             flexDirection: [`column`, `row`],
                         }}
                     >
-                        <form ref={form} onSubmit={sendEmail}>
-                            <input type="text" name='name' placeholder='Your Full Name' required/>
-                            <input type="email" name='email' placeholder='Your E-Mail' required/>
-                            <textarea name="message" rows="7" placeholder='Your Message' required></textarea>
-                            <button type='submit' className='btn btn-primary'>Send Message</button>
-                        </form>
+                        <Box ref={form} as="form" onSubmit={sendEmail}>
+                            <Label htmlFor="fullName">Your Full Name</Label>
+                            <Input type="text" name="fullName" id="fullName" mb={3} />
+                            <Label htmlFor="email">Your E-Mail</Label>
+                            <Input type="email" name="email" id="email" mb={3} />
+                            <Label htmlFor="message">Your Message</Label>
+                            <Textarea name="message" id="message" rows={6} mb={3} sx={{ width: 800 }} />
+                            <Button>Submit</Button>
+                        </Box>
                     </Flex>
                 </Box>
             </Container>

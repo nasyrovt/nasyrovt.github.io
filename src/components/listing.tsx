@@ -4,6 +4,7 @@ import { Themed } from "@theme-ui/mdx"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage as Img, IGatsbyImageData } from "gatsby-plugin-image"
 import { Circle, Donut } from "./shapes"
+// @ts-ignore
 import iconExternal from "../icons/icon-external-window.svg"
 
 type Props = {

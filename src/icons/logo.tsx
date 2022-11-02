@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from "react"
 
 type Props = { className?: string; hidden?: boolean }

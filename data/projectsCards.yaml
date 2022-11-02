@@ -37,7 +37,7 @@
 - title: "Simple Shooter"
   url: "https://github.com/nasyrovt/UnrealEngine_SimpleShooter"
   preview: "/simple-shooter/"
-  description: "Third person shooter game with AAA assets from Unreal Engine Marketplace. TPS gameplay with AI to play against. (Part of my self-education)>"
+  description: "Third person shooter game with AAA assets from Unreal Engine Marketplace. TPS gameplay with AI to play against. (Part of my self-education)"
   image: "./simple-shooter.jpg"
   shapes:
     - type: "donut"
