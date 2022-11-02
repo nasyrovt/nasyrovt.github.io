@@ -5,6 +5,7 @@ import { Circle, Donut } from "./shapes"
 import { down, upWide } from "../styles/animations"
 import Logo from "../icons/logo"
 import CircleGrid from "../icons/circle-grid"
+import CV from "../../public/static/cv.pdf"
 
 
 const AboutMe = () => {
@@ -113,7 +114,7 @@ const AboutMe = () => {
               flexDirection: [`column`, `row`],
             }}
           >
-            <a href="../../public/cv.pdf" download sx={{ variant: `buttons.white` }}>
+            <a href={CV} download sx={{ variant: `buttons.white` }}>
               Get CV
             </a>
             <a href="https://patreon.com/user?u=82048251" sx={{ variant: `buttons.white` }}>
