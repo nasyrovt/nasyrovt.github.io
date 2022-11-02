@@ -4,7 +4,6 @@ import {Container, get} from "theme-ui";
 import {Themed} from "@theme-ui/mdx";
 import {Circle, Donut} from "../components/shapes";
 import {upWide} from "../styles/animations";
-import CircleGrid from "../icons/circle-grid";
 
 export default function BlogPostTemplate({data: {markdownRemark}}) {
     const {frontmatter, html} = markdownRemark;

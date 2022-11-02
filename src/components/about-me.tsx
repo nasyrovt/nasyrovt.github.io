@@ -3,7 +3,8 @@ import { Container, jsx, Box, Flex, useColorMode, get } from "theme-ui"
 import { Themed } from "@theme-ui/mdx"
 import { Circle, Donut } from "./shapes"
 import { down, upWide } from "../styles/animations"
-import Logo from "../icons/logo"
+// @ts-ignore
+import UE from "../../public/unreal.png"
 import CircleGrid from "../icons/circle-grid"
 // @ts-ignore
 import CV from "../../public/cv.pdf"
@@ -53,16 +54,14 @@ const AboutMe = () => {
         right={[`145px`, `145px`, `375px`]}
         sx={{ animation: `${upWide} 20s ease-in-out infinite alternate` }}
       />
-      <Logo
-        sx={{
-          width: [70, 70, 90],
-          height: [70, 70, 90],
-          top: `112px`,
-          right: [`40px`, `40px`, `240px`],
-          position: `absolute`,
-          color: `white`,
-        }}
-      />
+        <img src={UE} alt="Unreal Engine" sx={{
+            width: [70, 70, 90],
+            height: [70, 70, 90],
+            top: `105px`,
+            right: [`40px`, `40px`, `240px`],
+            position: `absolute`,
+            color: `white`,
+        }}/>
       <Circle
         size={[`100px`, `100px`, `120px`]}
         color="darkIndigo"

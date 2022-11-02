@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { Container, jsx, Flex, Box, useColorMode } from "theme-ui"
-import Logo from "../icons/logo"
 import ThemeSwitch from "../icons/theme-switch"
+// @ts-ignore
+import LOGO from "../../public/Logo.png"
 
 const modes = [`light`, `dark`, `strangerThings`]
 
@@ -23,7 +24,7 @@ const Header = () => {
               sx={{ color: `text`, "&:hover,&:focus": { color: `primary`, boxShadow: `none` } }}
               href="https://github.com/nasyrovt"
             >
-              <Logo sx={{ width: 70, height: 70 }} />
+              <img src={LOGO} alt="Logo" sx={{ width: 120, height: 70 }} />
             </a>
             <Box
               aria-hidden="true"

@@ -1092,6 +1092,11 @@
   resolved "https://registry.yarnpkg.com/@chevrotain/utils/-/utils-10.4.0.tgz#9c511dac4445cd0e246d577ce2e329579a897657"
   integrity sha512-WdE+5vP7xbGdpk4VEXlLaGE/swO/BoXTToAQVvjNRYRbvDcJnBRidN/au2ibWMFvxzgXC8kFi8UEINwwTpGA1A==
 
+"@emailjs/browser@^3.9.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@emailjs/browser/-/browser-3.9.0.tgz#e2f85afada83c5b532e744250885edb7006b97f0"
+  integrity sha512-NyWRmPUS0gg2Z+ygLMNSBcHNwlPFL0cEs6u62AwxNO5EjlYQiWHU///LYOfPM54ZZOoHJ2gNVUU+VnnMrKXraA==
+
 "@emotion/babel-plugin@^11.10.5":
   version "11.10.5"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.10.5.tgz#65fa6e1790ddc9e23cc22658a4c5dea423c55c3c"
