@@ -5,7 +5,8 @@ import { Circle, Donut } from "./shapes"
 import { down, upWide } from "../styles/animations"
 import Logo from "../icons/logo"
 import CircleGrid from "../icons/circle-grid"
-import CV from "../../public/static/cv.pdf"
+// @ts-ignore
+import CV from "../../public/cv.pdf"
 
 
 const AboutMe = () => {
