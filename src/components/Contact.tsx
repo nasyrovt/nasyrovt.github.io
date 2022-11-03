@@ -2,6 +2,7 @@
 import React, {useRef, useEffect} from 'react'
 import emailjs from '@emailjs/browser';
 import {Box, Button, Container, Flex, get, Input, Label, Textarea, useColorMode} from "theme-ui";
+import { Themed } from '@theme-ui/mdx';
 
 
 const Contact = () => {
@@ -33,7 +34,7 @@ const Contact = () => {
                         boxShadow: (t) => `0px 20px 25px ${get(t, `colors.shadow`)}`,
                     }}
                 >
-                    <h3
+                    <Themed.h3
                         sx={{
                             fontWeight: `bold`,
                             fontSize: [2, 3, 4],
@@ -44,7 +45,7 @@ const Contact = () => {
                         }}
                     >
                         Get in touch with me
-                    </h3>
+                    </Themed.h3>
                     <Flex
                         sx={{
                             justifyContent: `space-evenly`,
