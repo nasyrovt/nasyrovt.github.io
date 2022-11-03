@@ -62,7 +62,7 @@ const Contact = () => {
                             <Input type="email" name="email" id="email" mb={3} />
                             <Label htmlFor="message">Your Message</Label>
                             <Textarea name="message" id="message" rows={6} mb={3} sx={{ width: 800 }} />
-                            <Button>Submit</Button>
+                            <Button sx={{variant: `buttons.white`}}>Submit</Button>
                         </Box>
                     </Flex>
                 </Box>
