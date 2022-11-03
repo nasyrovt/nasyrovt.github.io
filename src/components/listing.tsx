@@ -2,10 +2,8 @@
 import { Flex, Box, jsx, Container, useColorMode, ThemeUICSSObject, get } from "theme-ui"
 import { Themed } from "@theme-ui/mdx"
 import { graphql, useStaticQuery } from "gatsby"
-import { GatsbyImage as Img, IGatsbyImageData } from "gatsby-plugin-image"
+import {GatsbyImage as Img, IGatsbyImageData, StaticImage} from "gatsby-plugin-image"
 import { Circle, Donut } from "./shapes"
-// @ts-ignore
-import iconExternal from "../icons/icon-external-window.svg"
 
 type Props = {
   allThemes: {
@@ -171,7 +169,7 @@ const Listing = () => {
               >
                 <div data-name="card-overlay" aria-hidden>
                   <div sx={{ display: `flex`, alignItems: `center` }}>
-                    <img width="40" height="40" sx={{ mr: 3 }} alt="" src={iconExternal} /> Preview
+                    <StaticImage width="40" height="40" sx={{ mr: 3 }} alt="" src="../icons/icon-external-window.svg" /> Preview
                   </div>
                 </div>
                 {theme?.image?.childImageSharp?.gatsbyImageData && (

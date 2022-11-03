@@ -9,6 +9,7 @@ import CircleGrid from "../icons/circle-grid"
 // @ts-ignore
 import CV from "../../public/cv.pdf"
 import Contact from "./Contact";
+import {StaticImage} from "gatsby-plugin-image";
 
 
 const AboutMe = () => {
@@ -63,7 +64,7 @@ const AboutMe = () => {
                 right={[`145px`, `145px`, `375px`]}
                 sx={{animation: `${upWide} 20s ease-in-out infinite alternate`}}
             />
-            <img src={UE} alt="Unreal Engine" id="unreal-image" sx={{
+            <StaticImage src="../../static/unreal.png" alt="Unreal Engine" sx={{
                 width: [70, 70, 90],
                 height: [70, 70, 90],
                 top: `105px`,

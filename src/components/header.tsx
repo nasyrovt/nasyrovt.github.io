@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { Container, jsx, Flex, Box, useColorMode } from "theme-ui"
 import ThemeSwitch from "../icons/theme-switch"
-// @ts-ignore
-import LOGO from "../../static/Logo.png"
+import {StaticImage} from "gatsby-plugin-image";
 
 const modes = [`light`, `dark`, `strangerThings`]
 
@@ -24,7 +23,7 @@ const Header = () => {
               sx={{ color: `text`, "&:hover,&:focus": { color: `primary`, boxShadow: `none` } }}
               href="https://github.com/nasyrovt"
             >
-              <img src={LOGO} alt="Logo" sx={{ width: 120, height: 70 }} />
+              <StaticImage src="../../static/Logo.png" alt="Logo" sx={{ width: 120, height: 70 }} placeholder="blurred"/>
             </a>
             <Box
               aria-hidden="true"
