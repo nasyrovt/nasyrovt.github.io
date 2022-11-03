@@ -1,7 +1,7 @@
 ---
 title: "Simple Shooter"
 slug: "/simple-shooter"
-image: "../public/portfolio1.jpeg"
+image: ../../data/projectImages/simple-shooter.jpg
 stack: "Unreal Engine 4.22 / C++" 
 ---
 

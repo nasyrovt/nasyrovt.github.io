@@ -34,7 +34,7 @@ const Contact = () => {
                         boxShadow: (t) => `0px 20px 25px ${get(t, `colors.shadow`)}`,
                     }}
                 >
-                    <Themed.h3
+                    <Themed.h2
                         sx={{
                             fontWeight: `bold`,
                             fontSize: [2, 3, 4],
@@ -45,7 +45,7 @@ const Contact = () => {
                         }}
                     >
                         Get in touch with me
-                    </Themed.h3>
+                    </Themed.h2>
                     <Flex
                         sx={{
                             justifyContent: `space-evenly`,

@@ -3,8 +3,8 @@ import type { GatsbyConfig, PluginRef } from "gatsby"
 import path from "path"
 import "dotenv/config"
 
-const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
-const googleTagId = process.env.GOOGLE_PROPERTY_ID
+// const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
+// const googleTagId = process.env.GOOGLE_PROPERTY_ID
 const githubToken = process.env.GITHUB_TOKEN
 
 const config: GatsbyConfig = {
@@ -30,6 +30,13 @@ const config: GatsbyConfig = {
       options: {
         name: `projects`,
         path: `${__dirname}/src/markdown`, // Second approach to give absolute path
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projectImages`,
+        path: `${__dirname}/data/projectImages`, // Second approach to give absolute path
       },
     },
     `gatsby-transformer-remark`,
@@ -98,14 +105,14 @@ const config: GatsbyConfig = {
     //     ],
     //   },
     // },
-    shouldAnalyseBundle && {
-      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
-      options: {
-        analyzerMode: `static`,
-        reportFilename: `_bundle.html`,
-        openAnalyzer: false,
-      },
-    },
+    // shouldAnalyseBundle && {
+    //   resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+    //   options: {
+    //     analyzerMode: `static`,
+    //     reportFilename: `_bundle.html`,
+    //     openAnalyzer: false,
+    //   },
+    // },
   ].filter(Boolean) as PluginRef[],
 }
 

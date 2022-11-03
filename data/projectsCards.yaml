@@ -2,7 +2,7 @@
   url: "https://github.com/nasyrovt/PadBreak_RecimTestTechnique"
   preview: "/pad-break/"
   description: "Mobile hyper casual game where you have to adapt to color changes in order to survive."
-  image: "./pad-break.jpg"
+  image: "./projectImages/pad-break.jpg"
   shapes:
     - type: "circle"
       color: "green"
@@ -20,7 +20,7 @@
   url: "https://github.com/nasyrovt/Unity3D-PlanetAssault"
   preview: "/planet-assault/"
   description: "Timeline score-runner game. You have to defend the planet from invaders."
-  image: "./planet-assault.png"
+  image: "./projectImages/planet-assault.png"
   shapes:
     - type: "circle"
       color: "orange"
@@ -38,7 +38,7 @@
   url: "https://github.com/nasyrovt/UnrealEngine_SimpleShooter"
   preview: "/simple-shooter/"
   description: "Third person shooter game with AAA assets from Unreal Engine Marketplace. TPS gameplay with AI to play against. (Part of my self-education)"
-  image: "./simple-shooter.jpg"
+  image: "./projectImages/simple-shooter.jpg"
   shapes:
     - type: "donut"
       color: "blue"

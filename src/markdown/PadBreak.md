@@ -1,7 +1,7 @@
 ---
 title: "Pad Break"
 slug: "/pad-break"
-image: "../public/portfolio1.jpeg"
+image: ../../data/projectImages/pad-break.jpg
 stack: "Unity / C#" 
 ---
 

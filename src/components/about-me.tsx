@@ -7,7 +7,7 @@ import {down, upWide} from "../styles/animations"
 import UE from "../../static/unreal.png"
 import CircleGrid from "../icons/circle-grid"
 // @ts-ignore
-import CV from "../../public/cv.pdf"
+import CV from "../../static/cv.pdf"
 import Contact from "./Contact";
 import {StaticImage} from "gatsby-plugin-image";
 

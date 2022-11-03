@@ -1,7 +1,7 @@
 ---
 title: "Planet Assault"
 slug: "/planet-assault"
-image: "../public/portfolio1.jpeg"
+image: ../../data/projectImages/planet-assault.png
 stack: "Unity / C#" 
 ---
 
