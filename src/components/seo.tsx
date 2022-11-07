@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from "react"
 import useSiteMetadata from "../hooks/use-site-metadata"
 
@@ -75,7 +76,7 @@ const SEO = ({ description = ``, meta = [], pathname = ``, image = ``, title = `
     "@type": `Organization`,
     address: {
       "@type": `PostalAddress`,
-      addressCountry: `DE`,
+      addressCountry: `FR`,
       addressLocality: ``,
       postalCode: ``,
     },
@@ -83,9 +84,9 @@ const SEO = ({ description = ``, meta = [], pathname = ``, image = ``, title = `
     alternateName: defaultTitle,
     description: defaultDescription,
     url: siteUrl,
-    email: `hello@lekoarts.de`,
-    founder: `LekoArts`,
-    foundingDate: `2017-12-08`,
+    email: `tahanasyrov@gmail.com`,
+    founder: `Nasyrov Takhir`,
+    foundingDate: `2022-10-10`,
     foundingLocation: `Germany`,
     image: {
       "@type": `ImageObject`,
@@ -100,11 +101,7 @@ const SEO = ({ description = ``, meta = [], pathname = ``, image = ``, title = `
       width: `60`,
     },
     sameAs: [
-      `https://github.com/LekoArts`,
-      `https://www.behance.net/lekoarts`,
-      `https://dribbble.com/LekoArts`,
-      `https://youtube.de/LekoArtsDE`,
-      `https://twitter.com/lekoarts_de`,
+      `https://github.com/nasyrovt`
     ],
   })
 
@@ -126,10 +123,6 @@ const SEO = ({ description = ``, meta = [], pathname = ``, image = ``, title = `
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:image:alt" content={seo.description} />
       <meta name="twitter:creator" content={author} />
-      <meta name="twitter:label1" value="Support" />
-      <meta name="twitter:label2" value="Author's Homepage" />
-      <meta name="twitter:data1" value="https://github.com/sponsors/LekoArts" />
-      <meta name="twitter:data2" value="https://www.lekoarts.de" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5a67d8" />
