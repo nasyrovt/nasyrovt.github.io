@@ -87,7 +87,7 @@ const SEO = ({ description = ``, meta = [], pathname = ``, image = ``, title = `
     email: `tahanasyrov@gmail.com`,
     founder: `Nasyrov Takhir`,
     foundingDate: `2022-10-10`,
-    foundingLocation: `Germany`,
+    foundingLocation: `France`,
     image: {
       "@type": `ImageObject`,
       url: `${siteUrl}/social/avatar.png`,
