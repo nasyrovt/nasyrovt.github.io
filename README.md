@@ -2,7 +2,7 @@
   Nasyrov Takhir Personal Portfolio
 </h1>
 <p align="center">
-  <a href="https://teimurjan.dev">
+  <a href="https://taktakgamedev.gtsb.io">
     <img alt="Gatsby" src="./static/Logo.png" width="200" />
   </a>
 </p>
