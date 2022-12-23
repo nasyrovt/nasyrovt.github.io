@@ -24,7 +24,7 @@ const AboutMe = () => {
                     <h2 sx={(t) => get(t, `styles.h1`)}>About Me</h2>
                     <Themed.p>Hi 👋</Themed.p>
                     <Themed.p>
-                        I’m Takhir — and I’m a beginner Game Developer from France. I’m
+                        I’m Takhir — and I’m a Game Developer from France. I’m
                         passionate about working on game projects & developing a good experience for people who plays
                         them.
                     </Themed.p>

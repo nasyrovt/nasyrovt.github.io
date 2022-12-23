@@ -1,6 +1,6 @@
 import {graphql, useStaticQuery} from "gatsby";
 import * as React from "react";
-import {Container, get} from "theme-ui";
+import {Box, Container, Flex, get} from "theme-ui";
 import {Themed} from "@theme-ui/mdx";
 import {Circle, Donut} from "../components/shapes";
 import {upWide} from "../styles/animations";
@@ -9,15 +9,42 @@ import {GatsbyImage, StaticImage} from "gatsby-plugin-image";
 export default function BlogPostTemplate({data: {markdownRemark}}) {
     const {frontmatter, html} = markdownRemark;
     return (
-        <section sx={{position: `relative`, py: 6}}>
-            <Container>
-                <div sx={{maxWidth: `760px`}}>
-                    <h1 sx={(t) => get(t, `styles.h1`)}>{frontmatter.title}</h1>
-                    <Themed.p>{frontmatter.stack}</Themed.p>
-                    <GatsbyImage image={frontmatter.image.childImageSharp.gatsbyImageData} alt="Project"/>
-                    <div dangerouslySetInnerHTML={{__html: html}}/>
-                </div>
-            </Container>
+        <section sx={{px: 6,py: 6}}>
+            <Flex sx={{paddingLeft: `5%`, paddingTop: `100px`}}>
+              <Themed.h1>{frontmatter.title}</Themed.h1>
+            </Flex>
+            <Flex sx={{paddingLeft: `5%`}}>
+              <Themed.h5>Stack: {frontmatter.stack}</Themed.h5>
+            </Flex>
+            <Flex sx={{paddingLeft: `5%`}}>
+              <Themed.h5>Genre: <Themed.i>{frontmatter.genre}</Themed.i></Themed.h5>
+            </Flex>
+            <Flex sx={{paddingLeft: `5%`}}>
+              <Themed.h5>Target audience: <Themed.i>{frontmatter.targetAudience}</Themed.i></Themed.h5>
+            </Flex>
+            <Flex sx={{paddingLeft: `5%`}}>
+              <Themed.h5>Controls: <Themed.i>{frontmatter.controls}</Themed.i></Themed.h5>
+            </Flex>
+            <Flex sx={{paddingLeft: `5%`}}>
+              <Themed.h5>Platform: <Themed.i>{frontmatter.platform}</Themed.i></Themed.h5>
+            </Flex>
+            <Box
+              sx={{
+                py: [5, 5, 6],
+                display: `grid`,
+                gridTemplateColumns: [`1fr`, `1fr`, `1fr 1fr`],
+                gridGap: [3, 4, 5],
+                alignItems: `flex-start`,
+              }}
+            >
+              <Flex sx={{paddingX: `5%`, flexDirection: `column`, alignItems: `flex-start` }}>
+                <GatsbyImage style={{maxWidth:`1020px`}} image={frontmatter.image.childImageSharp.gatsbyImageData} alt="Project" />
+              </Flex>
+              
+              <Flex sx={{paddingX: `10%`, flexDirection: `column`, alignItems: `flex-start` }}>
+                <div  dangerouslySetInnerHTML={{__html: html}}/>
+              </Flex>
+            </Box>
 
             <Circle size={[`200px`, `200px`, `300px`]} color="red" top="-75px" right="5px"/>
             <Circle
@@ -67,6 +94,10 @@ export const pageQuery = graphql`
       frontmatter {
         title
         stack
+        genre
+        targetAudience
+        controls
+        platform
         image {
           childImageSharp {
             gatsbyImageData(
@@ -81,3 +112,13 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+
+
+
+
+
+
+
+
+          

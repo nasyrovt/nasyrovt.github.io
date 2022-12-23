@@ -1,10 +1,16 @@
 ---
 title: "Simple Shooter"
 slug: "/simple-shooter"
-image: ../../data/projectImages/simple-shooter.jpg
-stack: "Unreal Engine 4.22 / C++" 
+image: ../../data/projectImages/simple-shooter.png
+genre: "Third Person Shooter"
+stack: "Unreal Engine 4.22 / C++"
+targetAudience: "15+ aged"
+controls: "Keyboard + Mouse/Gamepad"
+platform: "PC/Console"
 ---
 
-## What I'm Working On
+### Game Summary
 
-Right now, I'm working through a [DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials) on using [Gatsby](https://www.gatsbyjs.com/) with Markdown.
+Third person shooter made in Unreal Engine using AAA assets from Paragon game.
+<br/>Full TPS controls with animations and shooting using raycast.
+<br/>AI bots have shooting and navigation movement systems.

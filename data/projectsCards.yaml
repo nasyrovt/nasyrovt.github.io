@@ -1,8 +1,26 @@
+- title: "Simple Shooter"
+  url: "https://github.com/nasyrovt/UnrealEngine_SimpleShooter"
+  preview: "/simple-shooter/"
+  description: "Third person shooter game with AAA assets from Unreal Engine Marketplace. TPS gameplay with AI to play against. (Part of my self-education)"
+  image: "./projectImages/simple-shooter.png"
+  shapes:
+    - type: "donut"
+      color: "blue"
+      size: ["120px", "220px"]
+      xOffset: ["-70px"]
+      yOffset: ["100px", "180px"]
+      opacity: 1
+    - type: "circle"
+      color: "purple"
+      size: ["50px", "100px"]
+      xOffset: ["140px"]
+      yOffset: ["-40px", "-70px"]
+      opacity: 1
 - title: "Pad Break"
   url: "https://github.com/nasyrovt/PadBreak_RecimTestTechnique"
   preview: "/pad-break/"
   description: "Mobile hyper casual game where you have to adapt to color changes in order to survive."
-  image: "./projectImages/pad-break.jpg"
+  image: "./projectImages/pad-break.png"
   shapes:
     - type: "circle"
       color: "green"
@@ -34,84 +52,67 @@
       xOffset: ["-40px"]
       yOffset: ["-60px"]
       opacity: 1
-- title: "Simple Shooter"
-  url: "https://github.com/nasyrovt/UnrealEngine_SimpleShooter"
-  preview: "/simple-shooter/"
-  description: "Third person shooter game with AAA assets from Unreal Engine Marketplace. TPS gameplay with AI to play against. (Part of my self-education)"
-  image: "./projectImages/simple-shooter.jpg"
+
+- title: "Guardian of Galaxy (Only one :)"
+  url: "https://github.com/nasyrovt/"
+  preview: "/guardian-of-galaxy/"
+  description: "Space battle multiplayer FPS/TPS inspired by Star-Wars: Squarons."
+  image: "./projectImages/guardian-of-galaxy.png"
   shapes:
+    - type: "circle"
+      color: "red"
+      size: ["100px", "175px"]
+      xOffset: ["-60px", "-90px"]
+      yOffset: ["100px", "200px", "180px", "230px"]
+      opacity: 1
     - type: "donut"
+      color: "teal"
+      size: ["80px", "150px"]
+      xOffset: ["-30px", "-70px"]
+      yOffset: ["-50px", "-50px", "-50px"]
+      opacity: 1
+    - type: "circle"
+      color: "yellow"
+      size: ["100px", "135px"]
+      xOffset: ["300px", "600px", "280px", "400px"]
+      yOffset: ["-40px", "-60px"]
+      opacity: 1
+- title: "Toon Tanks"
+  url: "https://github.com/nasyrovt/"
+  preview: "/toon-tanks-rts/"
+  description: "Real time strategy multiplayer game with base-battle system and variancy of pawns."
+  image: "./projectImages/toon-tanks.png"
+  shapes:
+    - type: "circle"
       color: "blue"
-      size: ["120px", "220px"]
+      size: ["100px", "200px"]
       xOffset: ["-70px"]
       yOffset: ["100px", "180px"]
       opacity: 1
     - type: "circle"
-      color: "purple"
-      size: ["50px", "100px"]
-      xOffset: ["140px"]
+      color: "orange"
+      size: ["80px", "100px"]
+      xOffset: ["350px", "350px", "320px", "400px"]
       yOffset: ["-40px", "-70px"]
       opacity: 1
-#- title: "Specimens"
-#  url: ""
-#  preview: ""
-#  description: ""
-#  image: ""
-#  shapes:
-#    - type: "circle"
-#      color: "red"
-#      size: ["100px", "175px"]
-#      xOffset: ["-60px", "-90px"]
-#      yOffset: ["100px", "200px", "180px", "230px"]
-#      opacity: 1
-#    - type: "donut"
-#      color: "teal"
-#      size: ["80px", "150px"]
-#      xOffset: ["-30px", "-70px"]
-#      yOffset: ["-50px", "-50px", "-50px"]
-#      opacity: 1
-#    - type: "circle"
-#      color: "yellow"
-#      size: ["100px", "135px"]
-#      xOffset: ["300px", "600px", "280px", "400px"]
-#      yOffset: ["-40px", "-60px"]
-#      opacity: 1
-#- title: ""
-#  url: ""
-#  preview: ""
-#  description: ""
-#  image: ""
-#  shapes:
-#    - type: "circle"
-#      color: "blue"
-#      size: ["100px", "200px"]
-#      xOffset: ["-70px"]
-#      yOffset: ["100px", "180px"]
-#      opacity: 1
-#    - type: "circle"
-#      color: "orange"
-#      size: ["80px", "100px"]
-#      xOffset: ["350px", "350px", "320px", "400px"]
-#      yOffset: ["-40px", "-70px"]
-#      opacity: 1
-#- title: ""
-#  url: ""
-#  preview: ""
-#  description: ""
-#  image: ""
-#  shapes:
-#    - type: "circle"
-#      color: "black"
-#      size: ["120px", "150px", "170px", "220px"]
-#      xOffset: ["-60px", "100px"]
-#      yOffset: ["200px", "200px", "140px", "180px"]
-#      opacity: 1
-#    - type: "donut"
-#      color: "red"
-#      size: ["60px", "110px"]
-#      xOffset: ["-40px"]
-#      yOffset: ["-60px"]
-#      opacity: 1
+- title: "Tower Defense"
+  url: "https://github.com/nasyrovt/TowerDefense"
+  preview: "/tower-defense/"
+  description: "Tower defense project with and without pathfinding."
+  image: "./projectImages/tower-defense.png"
+  shapes:
+    - type: "circle"
+      color: "black"
+      size: ["120px", "150px", "170px", "220px"]
+      xOffset: ["-60px", "100px"]
+      yOffset: ["200px", "200px", "140px", "180px"]
+      opacity: 1
+    - type: "donut"
+      color: "red"
+      size: ["60px", "110px"]
+      xOffset: ["-40px"]
+      yOffset: ["-60px"]
+      opacity: 1
 #- title: ""
 #  url: ""
 #  preview: ""
