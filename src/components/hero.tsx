@@ -49,7 +49,7 @@ const Hero = () => {
               <Themed.p sx={{ color: `dark`, mt: 3, mb: 4 }}>
                 Passionate and motivated <span sx={{ fontWeight: `bold` }}>Game Developer</span>{` `}
               </Themed.p>
-                <Themed.p>Experienced in <span sx={{ fontWeight: `bold` }}>Tools and Engine Development</span>
+                <Themed.p>Experienced in <span sx={{ fontWeight: `bold` }}>Tools and Engine Development</span>{` `}
                 and curious for <span sx={{ fontWeight: `bold` }}>Gameplay Programming</span>
                 </Themed.p>
             </Box>
