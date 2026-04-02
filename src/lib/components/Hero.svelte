@@ -6,41 +6,26 @@
 	import CircleGrid from './shapes/CircleGrid.svelte';
 	import { gsap } from '$lib/utils/gsap';
 
-	let stars = $state(0);
 	let SceneComponent = $state<typeof import('$lib/three/Scene.svelte').default | null>(null);
-	let heroEl: HTMLElement;
 
-	onMount(async () => {
-		// Fetch GitHub stars
-		try {
-			const res = await fetch(`https://api.github.com/users/${siteMetadata.github}`);
-			const data = await res.json();
-			stars = data.public_repos ?? 0;
-		} catch {
-			stars = 0;
-		}
-
+	onMount(() => {
 		// Dynamic import 3D scene (client only)
-		try {
-			const mod = await import('$lib/three/Scene.svelte');
-			SceneComponent = mod.default;
-		} catch {
-			// 3D not available
-		}
+		import('$lib/three/Scene.svelte')
+			.then((mod) => { SceneComponent = mod.default; })
+			.catch(() => {});
 
 		// GSAP hero animations
 		const tl = gsap.timeline({ delay: 0.2 });
 		tl.from('.hero-title', { opacity: 0, y: 40, duration: 0.8, ease: 'power2.out' })
 			.from('.hero-tagline', { opacity: 0, y: 30, duration: 0.6, ease: 'power2.out' }, '-=0.3')
 			.from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-			.from('.hero-stars', { opacity: 0, scale: 0.8, duration: 0.5, ease: 'back.out' }, '-=0.2')
 			.from('.hero-3d', { opacity: 0, duration: 1, ease: 'power2.out' }, '-=0.4');
 
 		return () => tl.kill();
 	});
 </script>
 
-<section class="hero" bind:this={heroEl}>
+<section class="hero">
 	<div class="hero-inner container">
 		<div class="hero-content">
 			<h1 class="hero-title">
@@ -50,19 +35,6 @@
 			<p class="hero-subtitle">
 				Building immersive experiences with Unreal Engine, Unity, and modern web technologies.
 			</p>
-			<a
-				href="https://github.com/{siteMetadata.github}"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="hero-stars"
-			>
-				<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-					<path
-						d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
-					/>
-				</svg>
-				{stars} Public Repos
-			</a>
 		</div>
 
 		<div class="hero-visual">
@@ -151,26 +123,6 @@
 		margin: 0 0 2rem;
 		max-width: 500px;
 		line-height: 1.6;
-	}
-
-	.hero-stars {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 1.25rem;
-		background: var(--color-background-themes);
-		border: 1px solid var(--color-muted);
-		border-radius: 0.5rem;
-		color: var(--color-text);
-		font-size: 0.875rem;
-		font-weight: 600;
-		transition: all 0.3s ease;
-	}
-
-	.hero-stars:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 12px var(--color-shadow);
-		opacity: 1;
 	}
 
 	.hero-visual {
