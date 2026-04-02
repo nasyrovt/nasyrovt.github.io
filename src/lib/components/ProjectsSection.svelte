@@ -47,7 +47,10 @@
 
 <section class="projects-section" class:first {id} style="--section-bg: {sectionBg}">
 	<div class="container">
-		<h2 class="section-title" use:scrollReveal={{ y: 30 }}>{title}</h2>
+		<div class="section-header" use:scrollReveal={{ y: 20 }}>
+			<span class="section-arrow">▼</span>
+			<h2 class="section-title">{title}</h2>
+		</div>
 
 		{#if projects.length > 0}
 			<div class="projects-grid" use:scrollReveal={{ children: true, stagger: 0.1, y: 40 }}>
@@ -56,7 +59,7 @@
 				{/each}
 			</div>
 		{:else}
-			<p class="empty-state">Coming soon — professional projects will be listed here.</p>
+			<p class="empty-state">— No projects found. Coming soon.</p>
 		{/if}
 	</div>
 </section>
@@ -97,10 +100,29 @@
 		z-index: 3;
 	}
 
+	/* UE panel header bar */
+	.section-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid var(--color-muted);
+		margin-bottom: 2rem;
+	}
+
+	.section-arrow {
+		color: var(--color-primary);
+		font-size: 0.7rem;
+		line-height: 1;
+	}
+
 	.section-title {
-		font-size: clamp(2rem, 4vw, 3rem);
-		text-align: center;
-		margin: 0 0 3rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-text-muted);
+		margin: 0;
 	}
 
 	.projects-grid {
@@ -110,9 +132,10 @@
 	}
 
 	.empty-state {
-		text-align: center;
 		color: var(--color-text-muted);
-		font-size: 1rem;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		letter-spacing: 0.05em;
 		padding: 2rem 0;
 	}
 </style>

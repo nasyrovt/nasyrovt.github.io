@@ -21,22 +21,21 @@
 
 <style>
 	.theme-switch {
-		background: none;
-		border: 2px solid var(--color-muted);
-		border-radius: 9999px;
-		width: 44px;
-		height: 44px;
+		background: var(--color-background-themes);
+		border: 1px solid var(--color-muted);
+		border-radius: 2px;
+		width: 28px;
+		height: 28px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
-		transition: all 0.3s ease;
-		font-size: 1.2rem;
+		transition: border-color 0.15s ease;
+		font-size: 0.9rem;
 	}
 
 	.theme-switch:hover {
 		border-color: var(--color-primary);
-		transform: scale(1.1);
 	}
 
 	.theme-icon {

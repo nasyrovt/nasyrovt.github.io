@@ -12,11 +12,14 @@
 
 <section class="about-section" id="about" style="--section-bg: {sectionBg}">
 	<div class="container">
-		<h2 class="section-title" use:scrollReveal={{ y: 30 }}>About Me</h2>
+		<div class="panel-header" use:scrollReveal={{ y: 20 }}>
+			<span class="panel-arrow">▼</span>
+			<h2 class="panel-title">ABOUT ME</h2>
+		</div>
 
-		<div class="about-grid" use:scrollReveal={{ children: true, stagger: 0.15, y: 40 }}>
+		<div class="about-grid" use:scrollReveal={{ children: true, stagger: 0.1, y: 30 }}>
 			<div class="about-card">
-				<h3>Background</h3>
+				<div class="card-header"><span>▶</span> BACKGROUND</div>
 				<p>
 					I'm a passionate game developer with experience in Unreal Engine and Unity. I enjoy
 					creating immersive gameplay experiences and constantly learning new technologies. From
@@ -26,7 +29,7 @@
 			</div>
 
 			<div class="about-card">
-				<h3>Education</h3>
+				<div class="card-header"><span>▶</span> EDUCATION</div>
 				<p>
 					Currently pursuing my studies in game development and computer science. I believe in
 					learning by doing — every project in my portfolio represents a step in my journey as a
@@ -35,7 +38,7 @@
 			</div>
 
 			<div class="about-card">
-				<h3>What I Do</h3>
+				<div class="card-header"><span>▶</span> WHAT I DO</div>
 				<p>
 					I specialize in gameplay programming, AI systems, networking/multiplayer, and creative
 					coding. I work with C++, C#, and modern web technologies to bring ideas to life.
@@ -83,10 +86,29 @@
 		z-index: 3;
 	}
 
-	.section-title {
-		font-size: clamp(2rem, 4vw, 3rem);
-		text-align: center;
-		margin: 0 0 3rem;
+	/* UE Details Panel header */
+	.panel-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid var(--color-muted);
+		margin-bottom: 2rem;
+	}
+
+	.panel-arrow {
+		color: var(--color-primary);
+		font-size: 0.75rem;
+		line-height: 1;
+	}
+
+	.panel-title {
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-text-muted);
+		margin: 0;
 	}
 
 	.about-grid {
@@ -103,26 +125,42 @@
 	}
 
 	.about-card {
-		background: var(--color-background-themes);
+		background: var(--color-background);
 		border: 1px solid var(--color-muted);
-		border-radius: 1rem;
-		padding: 2rem;
-		transition: all 0.3s ease;
+		border-radius: 2px;
+		overflow: hidden;
+		transition: border-color 0.15s ease;
 	}
 
 	.about-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 8px 24px var(--color-shadow);
+		border-color: var(--color-primary);
 	}
 
-	.about-card h3 {
-		font-size: 1.25rem;
-		margin: 0 0 0.75rem;
+	/* UE category header bar inside the card */
+	.card-header {
+		background: var(--color-background-themes);
+		border-bottom: 1px solid var(--color-muted);
+		padding: 0.4rem 0.75rem;
+		font-size: 0.65rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-text-muted);
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.card-header span {
+		color: var(--color-primary);
+		font-size: 0.6rem;
 	}
 
 	.about-card p {
+		padding: 0.875rem;
 		color: var(--color-text-muted);
 		line-height: 1.6;
+		font-size: 0.875rem;
 		margin: 0;
 	}
 

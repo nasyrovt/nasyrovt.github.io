@@ -42,6 +42,7 @@
 	--font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	--font-heading: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	--font-stranger: 'Benguiat', 'IBM Plex Sans', serif;
+	--font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
 	--color-primary: #5a67d8;
 	--color-shadow: #c3dafe;
@@ -170,6 +171,25 @@ body {
 		color 0.3s ease;
 }
 
+/* Dark scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #2e2e2e;
+	border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #3e3e3e;
+}
+
 h1,
 h2,
 h3,
@@ -189,6 +209,28 @@ a {
 
 a:hover {
 	opacity: 0.8;
+}
+
+button {
+	appearance: none;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+input,
+textarea,
+select {
+	border-radius: 2px;
+}
+
+button:not([class]) {
+	border-radius: 2px;
 }
 
 /* ── Layout ── */

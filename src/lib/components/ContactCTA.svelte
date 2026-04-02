@@ -3,78 +3,107 @@
 </script>
 
 <div class="contact-cta">
-	<h3 class="cta-title">Get in Touch</h3>
-	<p class="cta-text">Feel free to reach out via any of the channels below.</p>
+	<div class="cta-header">
+		<span class="cta-header-arrow">▶</span>
+		<span class="cta-header-label">GET IN TOUCH</span>
+	</div>
+	<div class="cta-body">
+		<h3 class="cta-title">Get in Touch</h3>
+		<p class="cta-text">Feel free to reach out via any of the channels below.</p>
 
-	<div class="cta-links">
-		<a href="mailto:nasyrovt@example.com" class="cta-link">
-			<span class="cta-icon">✉️</span>
-			<span>Email</span>
-		</a>
-		<a
-			href="https://github.com/{siteMetadata.github}"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="cta-link"
-		>
-			<span class="cta-icon">💻</span>
-			<span>GitHub</span>
-		</a>
-		<a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="cta-link">
-			<span class="cta-icon">📄</span>
-			<span>Download CV</span>
-		</a>
+		<div class="cta-links">
+			<a href="mailto:nasyrovt@example.com" class="cta-link">
+				<span>Email</span>
+			</a>
+			<a
+				href="https://github.com/{siteMetadata.github}"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="cta-link"
+			>
+				<span>GitHub</span>
+			</a>
+			<a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="cta-link">
+				<span>Download CV</span>
+			</a>
+		</div>
 	</div>
 </div>
 
 <style>
 	.contact-cta {
-		background: var(--color-background-themes);
+		background: var(--color-background);
 		border: 1px solid var(--color-muted);
-		border-radius: 1rem;
-		padding: 2.5rem;
-		text-align: center;
-		transition: all 0.3s ease;
+		border-radius: 2px;
+		padding: 0;
+		transition: border-color 0.15s ease;
+	}
+
+	.cta-header {
+		background: var(--color-background-themes);
+		border-bottom: 1px solid var(--color-muted);
+		padding: 0.5rem 1.25rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.cta-header-arrow {
+		color: var(--color-primary);
+		font-size: 0.6rem;
+		line-height: 1;
+	}
+
+	.cta-header-label {
+		font-size: 0.65rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-text-muted);
+	}
+
+	.cta-body {
+		padding: 1.5rem 1.25rem;
 	}
 
 	.cta-title {
-		font-size: 1.5rem;
-		margin: 0 0 0.5rem;
+		font-size: 0.9rem;
+		font-weight: 700;
+		margin: 0 0 0.4rem;
+		color: var(--color-heading);
 	}
 
 	.cta-text {
 		color: var(--color-text-muted);
-		margin: 0 0 1.5rem;
+		font-size: 0.8rem;
+		margin: 0 0 1.25rem;
 	}
 
 	.cta-links {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		gap: 1rem;
+		gap: 0.75rem;
 	}
 
 	.cta-link {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		border: 2px solid var(--color-muted);
-		border-radius: 9999px;
+		gap: 0.4rem;
+		padding: 0.35rem 0.875rem;
+		border: 1px solid var(--color-muted);
+		border-radius: 2px;
 		color: var(--color-text);
+		font-size: 0.75rem;
 		font-weight: 600;
-		font-size: 0.875rem;
-		transition: all 0.3s ease;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		transition: all 0.15s ease;
+		text-decoration: none;
 	}
 
 	.cta-link:hover {
 		border-color: var(--color-primary);
 		color: var(--color-primary);
-		transform: translateY(-2px);
 		opacity: 1;
-	}
-
-	.cta-icon {
-		font-size: 1.2rem;
 	}
 </style>
