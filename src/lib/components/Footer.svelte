@@ -4,7 +4,7 @@
 
 <footer class="footer">
 	<div class="container">
-		<p>&copy; {year} Timur Nasyrov. All rights reserved.</p>
+		<p>&copy; {year} Takhir Nasyrov. All rights reserved.</p>
 	</div>
 </footer>
 

@@ -33,14 +33,25 @@
 		tooltipStyle = `left:${left}px; top:${top}px;`;
 	}
 
-	function showTooltip() {
-		positionTooltip();
-		tooltipVisible = true;
+	function toggleTooltip() {
+		if (tooltipVisible) {
+			tooltipVisible = false;
+		} else {
+			positionTooltip();
+			tooltipVisible = true;
+		}
 	}
 
 	function hideTooltip() {
 		tooltipVisible = false;
 	}
+
+	$effect(() => {
+		if (!tooltipVisible) return;
+		const handler = () => hideTooltip();
+		window.addEventListener('click', handler);
+		return () => window.removeEventListener('click', handler);
+	});
 
 	const specs = $derived([
 		project.genre     && { label: 'Genre',    value: project.genre },
@@ -55,15 +66,15 @@
 <article
 	class="project-card"
 	bind:this={cardEl}
-	onmouseenter={showTooltip}
-	onmouseleave={hideTooltip}
-	onfocus={showTooltip}
-	onblur={hideTooltip}
+	onclick={toggleTooltip}
+	onkeydown={(e) => e.key === 'Enter' && toggleTooltip()}
+	role="button"
+	tabindex="0"
 >
 	<div class="card-image-wrapper">
 		<img src={project.image} alt={project.title} class="card-image" loading="lazy" />
 		<div class="card-overlay">
-			<span class="overlay-text">Hover for details</span>
+			<span class="overlay-text">Click for details</span>
 		</div>
 	</div>
 	<p class="card-title">{project.title}</p>
@@ -71,13 +82,13 @@
 
 {#if tooltipVisible}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
 	<div
 		class="tooltip"
 		class:arrow-left={arrowOnLeft}
 		class:arrow-right={!arrowOnLeft}
 		style="{tooltipStyle} width:{TOOLTIP_WIDTH}px;"
-		onmouseenter={showTooltip}
-		onmouseleave={hideTooltip}
+		onclick|stopPropagation={() => {}}
 	>
 		<h3 class="tooltip-title">{project.title}</h3>
 		<p class="tooltip-description">{project.description}</p>
