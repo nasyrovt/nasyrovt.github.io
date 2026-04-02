@@ -1,9 +1,16 @@
 <script lang="ts">
 	import ContactCTA from './ContactCTA.svelte';
 	import { scrollReveal } from '$lib/utils/gsap';
+	import { theme } from '$lib/stores/theme';
+
+	let sectionBg = $derived(
+		$theme === 'dark'           ? '#1e1533' :
+		$theme === 'strangerThings' ? '#1a0505'  :
+		                              '#ede7f6'
+	);
 </script>
 
-<section class="about-section" id="about">
+<section class="about-section" id="about" style="--section-bg: {sectionBg}">
 	<div class="container">
 		<h2 class="section-title" use:scrollReveal={{ y: 30 }}>About Me</h2>
 
@@ -46,7 +53,7 @@
 	.about-section {
 		padding: 6rem 0;
 		position: relative;
-		background-color: var(--color-background-themes);
+		background-color: var(--section-bg);
 		background-size: cover;
 		background-position: center;
 	}
@@ -54,11 +61,9 @@
 	.about-section::before {
 		content: '';
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 100px;
-		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
+		inset: 0 0 auto 0;
+		height: 90px;
+		background: linear-gradient(to bottom, transparent, var(--section-bg));
 		pointer-events: none;
 		z-index: 2;
 	}
@@ -66,11 +71,9 @@
 	.about-section::after {
 		content: '';
 		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 100px;
-		background: linear-gradient(to top, transparent, var(--color-background-themes));
+		inset: auto 0 0 0;
+		height: 90px;
+		background: linear-gradient(to top, transparent, var(--section-bg));
 		pointer-events: none;
 		z-index: 2;
 	}

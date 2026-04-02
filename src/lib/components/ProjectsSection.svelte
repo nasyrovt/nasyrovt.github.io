@@ -2,18 +2,50 @@
 	import type { Project } from '$lib/types';
 	import ProjectCard from './ProjectCard.svelte';
 	import { scrollReveal } from '$lib/utils/gsap';
+	import { theme } from '$lib/stores/theme';
 
 	interface Props {
 		projects: Project[];
 		title: string;
 		id?: string;
 		first?: boolean;
+		accent?: 'indigo' | 'teal' | 'orange' | 'purple' | 'pink';
 	}
 
-	let { projects, title, id = 'projects', first = false }: Props = $props();
+	let { projects, title, id = 'projects', first = false, accent = 'indigo' }: Props = $props();
+
+	const light: Record<string, string> = {
+		indigo: '#e8eaf6',
+		teal:   '#e0f2f1',
+		orange: '#fff3e0',
+		purple: '#ede7f6',
+		pink:   '#fce4ec',
+	};
+
+	const dark: Record<string, string> = {
+		indigo: '#1a1c3e',
+		teal:   '#0d2929',
+		orange: '#2d1a00',
+		purple: '#1e1533',
+		pink:   '#2d0d1e',
+	};
+
+	const stranger: Record<string, string> = {
+		indigo: '#1a0505',
+		teal:   '#1a0505',
+		orange: '#1a0505',
+		purple: '#1a0505',
+		pink:   '#1a0505',
+	};
+
+	let sectionBg = $derived(
+		$theme === 'dark'           ? dark[accent]     :
+		$theme === 'strangerThings' ? stranger[accent]  :
+		                              light[accent]
+	);
 </script>
 
-<section class="projects-section" class:first {id}>
+<section class="projects-section" class:first {id} style="--section-bg: {sectionBg}">
 	<div class="container">
 		<h2 class="section-title" use:scrollReveal={{ y: 30 }}>{title}</h2>
 
@@ -33,34 +65,29 @@
 	.projects-section {
 		position: relative;
 		padding: 6rem 0;
-		background-color: var(--color-background-themes);
-		/* Ready for background-image when provided */
+		background-color: var(--section-bg);
 		background-size: cover;
 		background-position: center;
 	}
 
-	/* Gradient fade in at the top */
+	/* Fast gradient fade in from the 3D scene */
 	.projects-section::before {
 		content: '';
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 100px;
-		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
+		inset: 0 0 auto 0;
+		height: 90px;
+		background: linear-gradient(to bottom, transparent, var(--section-bg));
 		pointer-events: none;
 		z-index: 2;
 	}
 
-	/* Gradient fade out at the bottom */
+	/* Fast gradient fade out to the 3D scene */
 	.projects-section::after {
 		content: '';
 		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 100px;
-		background: linear-gradient(to top, transparent, var(--color-background-themes));
+		inset: auto 0 0 0;
+		height: 90px;
+		background: linear-gradient(to top, transparent, var(--section-bg));
 		pointer-events: none;
 		z-index: 2;
 	}
