@@ -33,7 +33,8 @@
 		tooltipStyle = `left:${left}px; top:${top}px;`;
 	}
 
-	function toggleTooltip() {
+	function toggleTooltip(e: MouseEvent) {
+		e.stopPropagation();
 		if (tooltipVisible) {
 			tooltipVisible = false;
 		} else {
@@ -49,8 +50,12 @@
 	$effect(() => {
 		if (!tooltipVisible) return;
 		const handler = () => hideTooltip();
-		window.addEventListener('click', handler);
-		return () => window.removeEventListener('click', handler);
+		// Defer so the opening click doesn't immediately close the tooltip
+		const id = setTimeout(() => window.addEventListener('click', handler), 0);
+		return () => {
+			clearTimeout(id);
+			window.removeEventListener('click', handler);
+		};
 	});
 
 	const specs = $derived([
@@ -67,7 +72,7 @@
 	class="project-card"
 	bind:this={cardEl}
 	onclick={toggleTooltip}
-	onkeydown={(e) => e.key === 'Enter' && toggleTooltip()}
+	onkeydown={(e) => { if (e.key === 'Enter') { e.stopPropagation(); positionTooltip(); tooltipVisible = !tooltipVisible; } }}
 	role="button"
 	tabindex="0"
 >
