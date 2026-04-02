@@ -8,23 +8,12 @@
 		title: string;
 		id?: string;
 		first?: boolean;
-		accent?: 'indigo' | 'teal' | 'orange' | 'purple' | 'pink';
 	}
 
-	let { projects, title, id = 'projects', first = false, accent = 'indigo' }: Props = $props();
-
-	const colors: Record<string, string> = {
-		indigo:  '76, 81, 191',
-		teal:    '44, 122, 123',
-		orange:  '192, 86, 33',
-		purple:  '85, 60, 154',
-		pink:    '151, 38, 109',
-	};
-
-	let rgb = $derived(colors[accent] ?? colors.indigo);
+	let { projects, title, id = 'projects', first = false }: Props = $props();
 </script>
 
-<section class="projects-section" {id} style="--accent-rgb: {rgb}">
+<section class="projects-section" class:first {id}>
 	<div class="container">
 		<h2 class="section-title" use:scrollReveal={{ y: 30 }}>{title}</h2>
 
@@ -43,20 +32,42 @@
 <style>
 	.projects-section {
 		position: relative;
-		padding: 8rem 0;
-		/* Fades in from transparent at top, solid in middle, fades out at bottom */
-		background: linear-gradient(
-			to bottom,
-			transparent 0%,
-			rgba(var(--accent-rgb), 0.12) 20%,
-			rgba(var(--accent-rgb), 0.12) 80%,
-			transparent 100%
-		);
+		padding: 6rem 0;
+		background-color: var(--color-background-themes);
+		/* Ready for background-image when provided */
+		background-size: cover;
+		background-position: center;
+	}
+
+	/* Gradient fade in at the top */
+	.projects-section::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100px;
+		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	/* Gradient fade out at the bottom */
+	.projects-section::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100px;
+		background: linear-gradient(to top, transparent, var(--color-background-themes));
+		pointer-events: none;
+		z-index: 2;
 	}
 
 	.container {
 		position: relative;
-		z-index: 1;
+		z-index: 3;
 	}
 
 	.section-title {

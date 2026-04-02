@@ -44,20 +44,40 @@
 
 <style>
 	.about-section {
-		padding: 8rem 0;
+		padding: 6rem 0;
 		position: relative;
-		background: linear-gradient(
-			to bottom,
-			transparent 0%,
-			rgba(85, 60, 154, 0.12) 20%,
-			rgba(85, 60, 154, 0.12) 80%,
-			transparent 100%
-		);
+		background-color: var(--color-background-themes);
+		background-size: cover;
+		background-position: center;
+	}
+
+	.about-section::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100px;
+		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	.about-section::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100px;
+		background: linear-gradient(to top, transparent, var(--color-background-themes));
+		pointer-events: none;
+		z-index: 2;
 	}
 
 	.container {
 		position: relative;
-		z-index: 1;
+		z-index: 3;
 	}
 
 	.section-title {
