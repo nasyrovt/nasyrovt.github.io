@@ -4,6 +4,7 @@
 </script>
 
 <section class="about-section" id="about">
+	<div class="accent-overlay"></div>
 	<div class="container">
 		<h2 class="section-title" use:scrollReveal={{ y: 30 }}>About Me</h2>
 
@@ -45,6 +46,30 @@
 <style>
 	.about-section {
 		padding: 6rem 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.accent-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, #553c9a, #805ad5);
+		opacity: 0.06;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	:global([data-theme='dark']) .accent-overlay {
+		opacity: 0.12;
+	}
+
+	:global([data-theme='strangerThings']) .accent-overlay {
+		opacity: 0;
+	}
+
+	.container {
+		position: relative;
+		z-index: 1;
 	}
 
 	.section-title {

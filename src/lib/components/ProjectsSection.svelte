@@ -8,9 +8,20 @@
 		title: string;
 		id?: string;
 		first?: boolean;
+		accent?: 'indigo' | 'teal' | 'orange' | 'purple' | 'pink';
 	}
 
-	let { projects, title, id = 'projects', first = false }: Props = $props();
+	let { projects, title, id = 'projects', first = false, accent = 'indigo' }: Props = $props();
+
+	const gradients: Record<string, string> = {
+		indigo:  'linear-gradient(135deg, #4c51bf, #667eea)',
+		teal:    'linear-gradient(135deg, #2c7a7b, #38b2ac)',
+		orange:  'linear-gradient(135deg, #c05621, #ed8936)',
+		purple:  'linear-gradient(135deg, #553c9a, #805ad5)',
+		pink:    'linear-gradient(135deg, #97266d, #d53f8c)',
+	};
+
+	let sectionGradient = $derived(gradients[accent]);
 </script>
 
 <section class="projects-section" class:first {id}>
@@ -22,11 +33,13 @@
 		</div>
 	{/if}
 
-	<div class="projects-bg">
+	<div class="projects-bg" style="--section-gradient: {sectionGradient}">
 		{#if first}
-			<!-- Gradient that fades from transparent into the section background -->
 			<div class="emerge-gradient"></div>
 		{/if}
+
+		<!-- Gradient colour overlay -->
+		<div class="accent-overlay"></div>
 
 		<div class="container">
 			<h2 class="section-title" use:scrollReveal={{ y: 30 }}>{title}</h2>
@@ -60,11 +73,36 @@
 		padding: 4rem 0;
 		transition: background-color 0.3s ease;
 		position: relative;
+		overflow: hidden;
 	}
 
-	/* First section: no top padding — the gradient handles the transition */
 	.first .projects-bg {
 		padding-top: 5rem;
+	}
+
+	/* Gradient colour tint — sits behind content, above base bg */
+	.accent-overlay {
+		position: absolute;
+		inset: 0;
+		background: var(--section-gradient);
+		opacity: 0.07;
+		pointer-events: none;
+		z-index: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	[data-theme='dark'] .accent-overlay {
+		opacity: 0.13;
+	}
+
+	[data-theme='strangerThings'] .accent-overlay {
+		opacity: 0;
+	}
+
+	/* Content above overlay */
+	.container {
+		position: relative;
+		z-index: 1;
 	}
 
 	.emerge-gradient {
@@ -75,6 +113,7 @@
 		height: 140px;
 		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
 		pointer-events: none;
+		z-index: 1;
 	}
 
 	.section-title {
