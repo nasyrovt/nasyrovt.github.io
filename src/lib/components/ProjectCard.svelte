@@ -88,7 +88,7 @@
 		class:arrow-left={arrowOnLeft}
 		class:arrow-right={!arrowOnLeft}
 		style="{tooltipStyle} width:{TOOLTIP_WIDTH}px;"
-		onclick|stopPropagation={() => {}}
+		onclick={(e) => e.stopPropagation()}
 	>
 		<h3 class="tooltip-title">{project.title}</h3>
 		<p class="tooltip-description">{project.description}</p>
