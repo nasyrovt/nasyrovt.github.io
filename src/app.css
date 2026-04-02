@@ -1,0 +1,227 @@
+@import 'tailwindcss';
+
+/* ── Fonts ── */
+@font-face {
+	font-family: 'IBM Plex Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/ibm-plex-sans-400.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'IBM Plex Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('/fonts/ibm-plex-sans-500.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'IBM Plex Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('/fonts/ibm-plex-sans-600.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'IBM Plex Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('/fonts/ibm-plex-sans-700.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Benguiat';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('/fonts/Benguiat-Bold.woff2') format('woff2');
+}
+
+/* ── Theme: Light (default) ── */
+:root {
+	--font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--font-heading: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--font-stranger: 'Benguiat', 'IBM Plex Sans', serif;
+
+	--color-primary: #5a67d8;
+	--color-shadow: #c3dafe;
+	--color-secondary: #ed8936;
+	--color-background: #f7fafc;
+	--color-background-themes: #ffffff;
+	--color-text: #2d3748;
+	--color-text-muted: #667488;
+	--color-heading: #1a202c;
+	--color-muted: #a0aec0;
+
+	/* Gradients */
+	--gradient-blue: linear-gradient(45deg, #a3bffa, #667eea);
+	--gradient-orange: linear-gradient(225deg, #fbd38d, #ed8936);
+	--gradient-pink: linear-gradient(135deg, #f687b3, #d53f8c);
+	--gradient-purple: linear-gradient(135deg, #805ad5, #b794f4);
+	--gradient-gray: linear-gradient(135deg, #a0aec0, #4a5568);
+	--gradient-black: linear-gradient(135deg, #4a5568, #1a202c);
+	--gradient-red: linear-gradient(225deg, #e53e3e, #fc8181);
+	--gradient-yellow: linear-gradient(180deg, #ecc94b, #d69e2e);
+	--gradient-green: linear-gradient(225deg, #9ae6b4, #48bb78);
+	--gradient-indigo: linear-gradient(72deg, #4c51bf, #667eea);
+	--gradient-teal: linear-gradient(72deg, #2c7a7b, #38b2ac);
+	--gradient-dark-indigo: linear-gradient(135deg, #434190, #5a67d8);
+
+	--threlte-color-primary: #667eea;
+	--threlte-color-secondary: #ed8936;
+	--threlte-color-accent: #d53f8c;
+}
+
+/* ── Theme: Dark ── */
+[data-theme='dark'] {
+	--color-primary: #81e6d9;
+	--color-shadow: rgba(129, 230, 217, 0.15);
+	--color-secondary: #f6ad55;
+	--color-background: #1a202c;
+	--color-background-themes: #2d3748;
+	--color-text: #e2e8f0;
+	--color-text-muted: #a0aec0;
+	--color-heading: #f7fafc;
+	--color-muted: #718096;
+
+	--gradient-blue: linear-gradient(45deg, #667eea, #4c51bf);
+	--gradient-orange: linear-gradient(225deg, #ed8936, #c05621);
+	--gradient-pink: linear-gradient(135deg, #d53f8c, #97266d);
+	--gradient-purple: linear-gradient(135deg, #6b46c1, #9f7aea);
+	--gradient-gray: linear-gradient(135deg, #718096, #2d3748);
+	--gradient-black: linear-gradient(135deg, #2d3748, #000000);
+	--gradient-red: linear-gradient(225deg, #c53030, #fc8181);
+	--gradient-yellow: linear-gradient(180deg, #d69e2e, #b7791f);
+	--gradient-green: linear-gradient(225deg, #68d391, #2f855a);
+	--gradient-indigo: linear-gradient(72deg, #434190, #5a67d8);
+	--gradient-teal: linear-gradient(72deg, #234e52, #319795);
+	--gradient-dark-indigo: linear-gradient(135deg, #3c366b, #4c51bf);
+
+	--threlte-color-primary: #81e6d9;
+	--threlte-color-secondary: #f6ad55;
+	--threlte-color-accent: #f687b3;
+}
+
+/* ── Theme: Stranger Things ── */
+[data-theme='strangerThings'] {
+	--color-primary: #e53e3e;
+	--color-shadow: rgba(229, 62, 62, 0.25);
+	--color-secondary: #e53e3e;
+	--color-background: #0a0a0a;
+	--color-background-themes: #1a0a0a;
+	--color-text: #e2e8f0;
+	--color-text-muted: #a0aec0;
+	--color-heading: #e53e3e;
+	--color-muted: #718096;
+
+	--gradient-blue: radial-gradient(#ba230d, #520506);
+	--gradient-orange: radial-gradient(#ba230d, #520506);
+	--gradient-pink: radial-gradient(#ba230d, #520506);
+	--gradient-purple: radial-gradient(#ba230d, #520506);
+	--gradient-gray: radial-gradient(#ba230d, #520506);
+	--gradient-black: radial-gradient(#ba230d, #520506);
+	--gradient-red: radial-gradient(#ba230d, #520506);
+	--gradient-yellow: radial-gradient(#ba230d, #520506);
+	--gradient-green: radial-gradient(#ba230d, #520506);
+	--gradient-indigo: radial-gradient(#ba230d, #520506);
+	--gradient-teal: radial-gradient(#ba230d, #520506);
+	--gradient-dark-indigo: radial-gradient(#ba230d, #520506);
+
+	--threlte-color-primary: #e53e3e;
+	--threlte-color-secondary: #ba230d;
+	--threlte-color-accent: #fc8181;
+}
+
+/* ── Stranger Things heading glow ── */
+[data-theme='strangerThings'] h1,
+[data-theme='strangerThings'] h2,
+[data-theme='strangerThings'] h3 {
+	font-family: var(--font-stranger);
+	text-shadow:
+		0 0 10px rgba(229, 62, 62, 0.8),
+		0 0 20px rgba(229, 62, 62, 0.6),
+		0 0 40px rgba(229, 62, 62, 0.4),
+		0 0 80px rgba(229, 62, 62, 0.2);
+}
+
+/* ── Base styles ── */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-body);
+	color: var(--color-text);
+	background-color: var(--color-background);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-heading);
+	color: var(--color-heading);
+	line-height: 1.2;
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	opacity: 0.8;
+}
+
+/* ── Utility ── */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+/* ── Floating animation ── */
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes float-slow {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-15px) rotate(5deg);
+	}
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+	animation: float-slow 8s ease-in-out infinite;
+}
