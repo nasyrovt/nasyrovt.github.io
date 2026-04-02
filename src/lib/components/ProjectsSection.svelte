@@ -23,11 +23,11 @@
 	};
 
 	const dark: Record<string, string> = {
-		indigo: '#1a1c3e',
-		teal:   '#0d2929',
-		orange: '#2d1a00',
-		purple: '#1e1533',
-		pink:   '#2d0d1e',
+		indigo: '#101020',
+		teal:   '#0a1818',
+		orange: '#1a1000',
+		purple: '#120a1e',
+		pink:   '#1a0810',
 	};
 
 	const stranger: Record<string, string> = {

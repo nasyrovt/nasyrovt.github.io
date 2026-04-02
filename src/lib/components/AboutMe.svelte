@@ -4,7 +4,7 @@
 	import { theme } from '$lib/stores/theme';
 
 	let sectionBg = $derived(
-		$theme === 'dark'           ? '#1e1533' :
+		$theme === 'dark'           ? '#120a1e' :
 		$theme === 'strangerThings' ? '#1a0505'  :
 		                              '#ede7f6'
 	);

@@ -72,34 +72,35 @@
 	--threlte-color-accent: #d53f8c;
 }
 
-/* ── Theme: Dark ── */
+/* ── Theme: Dark (Unreal Engine-inspired) ── */
 [data-theme='dark'] {
-	--color-primary: #81e6d9;
-	--color-shadow: rgba(129, 230, 217, 0.15);
-	--color-secondary: #f6ad55;
-	--color-background: #1a202c;
-	--color-background-themes: #2d3748;
-	--color-text: #e2e8f0;
-	--color-text-muted: #a0aec0;
-	--color-heading: #f7fafc;
-	--color-muted: #718096;
+	/* Near-black backgrounds like UE5 editor */
+	--color-primary: #e8a020;           /* UE orange accent */
+	--color-shadow: rgba(0, 0, 0, 0.6);
+	--color-secondary: #4c9be8;         /* UE blue */
+	--color-background: #0d0d0d;        /* UE main viewport bg */
+	--color-background-themes: #1a1a1a; /* UE panel bg */
+	--color-text: #b8b8b8;              /* UE default text */
+	--color-text-muted: #5e5e5e;        /* UE inactive label */
+	--color-heading: #e0e0e0;           /* UE header text */
+	--color-muted: #2e2e2e;             /* UE border/divider */
 
-	--gradient-blue: linear-gradient(45deg, #667eea, #4c51bf);
-	--gradient-orange: linear-gradient(225deg, #ed8936, #c05621);
-	--gradient-pink: linear-gradient(135deg, #d53f8c, #97266d);
-	--gradient-purple: linear-gradient(135deg, #6b46c1, #9f7aea);
-	--gradient-gray: linear-gradient(135deg, #718096, #2d3748);
-	--gradient-black: linear-gradient(135deg, #2d3748, #000000);
-	--gradient-red: linear-gradient(225deg, #c53030, #fc8181);
-	--gradient-yellow: linear-gradient(180deg, #d69e2e, #b7791f);
-	--gradient-green: linear-gradient(225deg, #68d391, #2f855a);
-	--gradient-indigo: linear-gradient(72deg, #434190, #5a67d8);
-	--gradient-teal: linear-gradient(72deg, #234e52, #319795);
-	--gradient-dark-indigo: linear-gradient(135deg, #3c366b, #4c51bf);
+	--gradient-blue: linear-gradient(45deg, #1a3a6b, #4c9be8);
+	--gradient-orange: linear-gradient(225deg, #e8a020, #b07010);
+	--gradient-pink: linear-gradient(135deg, #7a1a4a, #c03070);
+	--gradient-purple: linear-gradient(135deg, #3a1a6b, #6b3ab0);
+	--gradient-gray: linear-gradient(135deg, #2e2e2e, #1a1a1a);
+	--gradient-black: linear-gradient(135deg, #1a1a1a, #000000);
+	--gradient-red: linear-gradient(225deg, #8b1a1a, #c03030);
+	--gradient-yellow: linear-gradient(180deg, #e8a020, #a07010);
+	--gradient-green: linear-gradient(225deg, #1a5a2a, #2a8a3a);
+	--gradient-indigo: linear-gradient(72deg, #1a1a4a, #3a3ab0);
+	--gradient-teal: linear-gradient(72deg, #0a2a2a, #1a6a6a);
+	--gradient-dark-indigo: linear-gradient(135deg, #12122e, #2a2a7a);
 
-	--threlte-color-primary: #81e6d9;
-	--threlte-color-secondary: #f6ad55;
-	--threlte-color-accent: #f687b3;
+	--threlte-color-primary: #e8a020;
+	--threlte-color-secondary: #4c9be8;
+	--threlte-color-accent: #c03070;
 }
 
 /* ── Theme: Stranger Things ── */
