@@ -1,101 +1,84 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { siteMetadata } from '$lib/data/site';
-	import Circle from './shapes/Circle.svelte';
-	import Donut from './shapes/Donut.svelte';
-	import CircleGrid from './shapes/CircleGrid.svelte';
 	import { gsap } from '$lib/utils/gsap';
 
-	let SceneComponent = $state<typeof import('$lib/three/Scene.svelte').default | null>(null);
-
 	onMount(() => {
-		// Dynamic import 3D scene (client only)
-		import('$lib/three/Scene.svelte')
-			.then((mod) => { SceneComponent = mod.default; })
-			.catch(() => {});
-
-		// GSAP hero animations
-		const tl = gsap.timeline({ delay: 0.2 });
-		tl.from('.hero-title', { opacity: 0, y: 40, duration: 0.8, ease: 'power2.out' })
-			.from('.hero-tagline', { opacity: 0, y: 30, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-			.from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-			.from('.hero-3d', { opacity: 0, duration: 1, ease: 'power2.out' }, '-=0.4');
-
+		const tl = gsap.timeline({ delay: 0.4 });
+		tl.from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' })
+			.from('.hero-name', { opacity: 0, y: 50, duration: 0.9, ease: 'power2.out' }, '-=0.3')
+			.from('.hero-tagline', { opacity: 0, y: 24, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+			.from('.hero-scroll', { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.1');
 		return () => tl.kill();
 	});
 </script>
 
 <section class="hero">
-	<div class="hero-inner container">
-		<div class="hero-content">
-			<h1 class="hero-title">
-				Hi, I'm <span class="gradient-text">{siteMetadata.author}</span>
-			</h1>
-			<p class="hero-tagline">Game Developer & Creative Technologist</p>
-			<p class="hero-subtitle">
-				Building immersive experiences with Unreal Engine, Unity, and modern web technologies.
-			</p>
-		</div>
+	<!-- Vignette so text stays readable over the 3D scene -->
+	<div class="hero-vignette"></div>
 
-		<div class="hero-visual">
-			<div class="hero-3d">
-				{#if SceneComponent}
-					<SceneComponent />
-				{/if}
-			</div>
+	<div class="hero-content">
+		<span class="hero-eyebrow">Hi, I'm</span>
+		<h1 class="hero-name">
+			<span class="gradient-text">{siteMetadata.author}</span>
+		</h1>
+		<p class="hero-tagline">Game Developer & Creative Technologist</p>
+	</div>
 
-			<!-- Decorative shapes -->
-			<div class="hero-shapes">
-				<div class="shape-1 animate-float">
-					<Circle color="blue" size="120px" />
-				</div>
-				<div class="shape-2 animate-float-slow">
-					<Donut color="orange" size="80px" />
-				</div>
-				<div class="shape-3 animate-float">
-					<Circle color="pink" size="60px" />
-				</div>
-				<div class="shape-4">
-					<CircleGrid />
-				</div>
-			</div>
-		</div>
+	<div class="hero-scroll">
+		<div class="scroll-line"></div>
+		<span class="scroll-label">scroll</span>
 	</div>
 </section>
 
 <style>
 	.hero {
-		padding: 4rem 0 6rem;
 		position: relative;
-		overflow: hidden;
-		min-height: 80vh;
+		min-height: 100vh;
 		display: flex;
 		align-items: center;
+		justify-content: center;
+		text-align: center;
+		/* Transparent — 3D scene shows through */
+		background: transparent;
+		overflow: hidden;
 	}
 
-	.hero-inner {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 3rem;
-		align-items: center;
-	}
-
-	@media (min-width: 900px) {
-		.hero-inner {
-			grid-template-columns: 1fr 1fr;
-		}
+	/* Subtle radial vignette — darkens edges, keeps center text legible */
+	.hero-vignette {
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			ellipse 80% 80% at 50% 50%,
+			transparent 40%,
+			var(--color-background) 100%
+		);
+		opacity: 0.5;
+		pointer-events: none;
+		z-index: 0;
 	}
 
 	.hero-content {
 		position: relative;
-		z-index: 2;
+		z-index: 1;
+		padding: 0 1rem;
 	}
 
-	.hero-title {
-		font-size: clamp(2rem, 5vw, 3.5rem);
+	.hero-eyebrow {
+		display: block;
+		font-size: clamp(1rem, 2vw, 1.25rem);
+		font-weight: 500;
+		color: var(--color-text-muted);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		margin-bottom: 0.75rem;
+	}
+
+	.hero-name {
+		font-size: clamp(3rem, 9vw, 7rem);
 		font-weight: 700;
-		margin: 0 0 1rem;
-		line-height: 1.1;
+		line-height: 1;
+		margin: 0 0 1.25rem;
 	}
 
 	.gradient-text {
@@ -111,67 +94,43 @@
 	}
 
 	.hero-tagline {
-		font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+		font-size: clamp(1rem, 2.5vw, 1.4rem);
 		color: var(--color-text-muted);
-		margin: 0 0 1rem;
-		font-weight: 500;
+		font-weight: 400;
+		margin: 0;
+		letter-spacing: 0.02em;
 	}
 
-	.hero-subtitle {
-		font-size: 1rem;
-		color: var(--color-text-muted);
-		margin: 0 0 2rem;
-		max-width: 500px;
-		line-height: 1.6;
-	}
-
-	.hero-visual {
-		position: relative;
-		min-height: 400px;
-		display: none;
-	}
-
-	@media (min-width: 900px) {
-		.hero-visual {
-			display: block;
-		}
-	}
-
-	.hero-3d {
-		width: 100%;
-		height: 400px;
-		position: relative;
+	/* Scroll indicator */
+	.hero-scroll {
+		position: absolute;
+		bottom: 2.5rem;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
 		z-index: 1;
 	}
 
-	.hero-shapes {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		pointer-events: none;
+	.scroll-line {
+		width: 1px;
+		height: 48px;
+		background: linear-gradient(to bottom, var(--color-primary), transparent);
+		animation: scroll-pulse 2s ease-in-out infinite;
+		transform-origin: top;
 	}
 
-	.shape-1 {
-		position: absolute;
-		top: -20px;
-		right: -40px;
+	.scroll-label {
+		font-size: 0.65rem;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
 	}
 
-	.shape-2 {
-		position: absolute;
-		bottom: 40px;
-		left: -30px;
-	}
-
-	.shape-3 {
-		position: absolute;
-		top: 50%;
-		right: 20%;
-	}
-
-	.shape-4 {
-		position: absolute;
-		bottom: -10px;
-		right: 10%;
+	@keyframes scroll-pulse {
+		0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+		50%       { opacity: 1;   transform: scaleY(1); }
 	}
 </style>

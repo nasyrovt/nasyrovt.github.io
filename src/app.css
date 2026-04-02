@@ -190,6 +190,12 @@ a:hover {
 	opacity: 0.8;
 }
 
+/* ── Layout ── */
+main {
+	position: relative;
+	z-index: 1;
+}
+
 /* ── Utility ── */
 .container {
 	max-width: 1200px;

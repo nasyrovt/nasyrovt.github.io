@@ -7,23 +7,27 @@
 		projects: Project[];
 		title: string;
 		id?: string;
+		first?: boolean;
 	}
 
-	let { projects, title, id = 'projects' }: Props = $props();
+	let { projects, title, id = 'projects', first = false }: Props = $props();
 </script>
 
-<section class="projects-section" {id}>
-	<!-- Curved SVG divider top -->
-	<div class="divider-top">
-		<svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-			<path
-				d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z"
-				fill="var(--color-background)"
-			/>
-		</svg>
-	</div>
+<section class="projects-section" class:first {id}>
+	{#if !first}
+		<div class="divider-top">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+				<path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" fill="var(--color-background)" />
+			</svg>
+		</div>
+	{/if}
 
 	<div class="projects-bg">
+		{#if first}
+			<!-- Gradient that fades from transparent into the section background -->
+			<div class="emerge-gradient"></div>
+		{/if}
+
 		<div class="container">
 			<h2 class="section-title" use:scrollReveal={{ y: 30 }}>{title}</h2>
 
@@ -39,13 +43,9 @@
 		</div>
 	</div>
 
-	<!-- Curved SVG divider bottom -->
 	<div class="divider-bottom">
 		<svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-			<path
-				d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z"
-				fill="var(--color-background)"
-			/>
+			<path d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z" fill="var(--color-background)" />
 		</svg>
 	</div>
 </section>
@@ -59,6 +59,22 @@
 		background-color: var(--color-background-themes);
 		padding: 4rem 0;
 		transition: background-color 0.3s ease;
+		position: relative;
+	}
+
+	/* First section: no top padding — the gradient handles the transition */
+	.first .projects-bg {
+		padding-top: 5rem;
+	}
+
+	.emerge-gradient {
+		position: absolute;
+		top: -140px;
+		left: 0;
+		right: 0;
+		height: 140px;
+		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
+		pointer-events: none;
 	}
 
 	.section-title {
