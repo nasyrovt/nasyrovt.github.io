@@ -5,9 +5,6 @@
 
 <header class="header">
 	<div class="header-inner container">
-		<a href="/" class="logo-link">
-			<img src="/Logo.png" alt="Logo" class="logo-img" />
-		</a>
 
 		<nav class="header-nav">
 			<a
@@ -50,25 +47,6 @@
 		align-items: center;
 		justify-content: space-between;
 		height: 64px;
-	}
-
-	.logo-link {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		color: var(--color-heading);
-		font-weight: 700;
-		font-size: 1.1rem;
-	}
-
-	.logo-link:hover {
-		opacity: 1;
-	}
-
-	.logo-img {
-		width: 36px;
-		height: 36px;
-		border-radius: 50%;
 	}
 
 	.header-nav {

@@ -9,6 +9,6 @@
 
 <SEO />
 <Hero />
-<ProjectsSection projects={data.projects} title="Personal Projects" id="personal-projects" />
 <ProjectsSection projects={data.professionalProjects} title="Professional Projects" id="professional-projects" />
+<ProjectsSection projects={data.projects} title="Personal Projects" id="personal-projects" />
 <AboutMe />
