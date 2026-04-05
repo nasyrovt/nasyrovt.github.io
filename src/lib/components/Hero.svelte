@@ -2,41 +2,65 @@
 	import { onMount } from 'svelte';
 	import { siteMetadata } from '$lib/data/site';
 	import { gsap } from '$lib/utils/gsap';
+	import { scrollY } from '$lib/stores/scroll';
+
+	interface Props {
+		name?: string;
+	}
+	let { name = siteMetadata.author }: Props = $props();
+
+	let vh = $state(800);
+	let nameEl = $state<HTMLHeadingElement | undefined>(undefined);
+	let displayName = $state(siteMetadata.author);
 
 	onMount(() => {
+		vh = window.innerHeight;
+		const onResize = () => { vh = window.innerHeight; };
+		window.addEventListener('resize', onResize);
+
 		const tl = gsap.timeline({ delay: 0.4 });
-		tl.from('.hero-label', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' })
-			.from('.hero-name', { opacity: 0, y: 50, duration: 0.9, ease: 'power2.out' }, '-=0.3')
-			.from('.hero-tagline', { opacity: 0, y: 24, duration: 0.7, ease: 'power2.out' }, '-=0.4')
-			.from('.hero-scroll', { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.1');
-		return () => tl.kill();
+		tl.from('.hero-label',  { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' })
+		  .from('.hero-name',   { opacity: 0, y: 50, duration: 0.9, ease: 'power2.out' }, '-=0.3')
+		  .from('.hero-scroll', { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.2');
+
+		return () => {
+			tl.kill();
+			window.removeEventListener('resize', onResize);
+		};
 	});
+
+	$effect(() => {
+		displayName = name;
+	});
+
+	let heroOpacity = $derived(Math.max(0, 1 - $scrollY / vh));
 </script>
 
 <section class="hero">
-	<!-- Subtle viewport grid lines -->
-	<div class="viewport-grid" aria-hidden="true"></div>
-
-	<!-- Subtle vignette -->
-	<div class="hero-vignette" aria-hidden="true"></div>
-
-	<div class="hero-content">
-		<span class="hero-label">// PORTFOLIO</span>
-		<h1 class="hero-name">{siteMetadata.author}</h1>
-		<p class="hero-tagline">Game Developer & Creative Technologist</p>
+	<!-- Background decorations — fade out -->
+	<div class="hero-bg" style="opacity: {heroOpacity}" aria-hidden="true">
+		<div class="viewport-grid"></div>
+		<div class="hero-vignette"></div>
 	</div>
 
-	<!-- Bottom-left corner info -->
-	<div class="hero-coords">UE5 / C++ / UNITY</div>
+	<div class="hero-content">
+		<span class="hero-label" style="opacity: {heroOpacity}">// PORTFOLIO</span>
+		<!-- Name stays visible, changes text -->
+		<h1 class="hero-name" bind:this={nameEl}>{displayName}</h1>
+	</div>
 
-	<div class="hero-scroll">
+	<div class="hero-coords" style="opacity: {heroOpacity}">UE5 / C++ / UNITY</div>
+
+	<div class="hero-scroll" style="opacity: {heroOpacity}">
 		<div class="scroll-line"></div>
 	</div>
 </section>
 
 <style>
 	.hero {
-		position: relative;
+		position: sticky;
+		top: 0;
+		z-index: 1;
 		min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -46,19 +70,23 @@
 		overflow: hidden;
 	}
 
-	/* CSS grid lines mimicking UE viewport grid */
+	/* Background layer */
+	.hero-bg {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
 	.viewport-grid {
 		position: absolute;
 		inset: 0;
 		z-index: 0;
-		pointer-events: none;
 		background-image:
 			linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
 			linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 		background-size: 40px 40px;
 	}
 
-	/* Very subtle vignette */
 	.hero-vignette {
 		position: absolute;
 		inset: 0;
@@ -68,8 +96,6 @@
 			var(--color-background) 100%
 		);
 		opacity: 0.3;
-		pointer-events: none;
-		z-index: 0;
 	}
 
 	.hero-content {
@@ -98,16 +124,7 @@
 		margin: 0 0 1.25rem;
 	}
 
-	.hero-tagline {
-		font-size: clamp(0.8rem, 1.5vw, 1rem);
-		letter-spacing: 0.15em;
-		text-transform: uppercase;
-		color: var(--color-text-muted);
-		font-weight: 400;
-		margin: 0;
-	}
 
-	/* Bottom-left coordinates label */
 	.hero-coords {
 		position: absolute;
 		bottom: 2rem;
@@ -121,7 +138,6 @@
 		pointer-events: none;
 	}
 
-	/* Scroll indicator — line only, no label */
 	.hero-scroll {
 		position: absolute;
 		bottom: 2.5rem;

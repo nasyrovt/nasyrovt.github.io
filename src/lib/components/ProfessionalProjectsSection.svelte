@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Project } from '$lib/types';
 	import { scrollReveal } from '$lib/utils/gsap';
 
@@ -8,7 +9,49 @@
 
 	let { projects }: Props = $props();
 
-	// Modal state
+	// ── Timeline ──────────────────────────────────────────────────────────────
+	function extractDate(platform: string = '') {
+		const parts = platform.split('·').map(s => s.trim());
+		const datePart = parts.at(-1) ?? '';
+		const years = datePart.match(/\d{4}/g) ?? [];
+		const isPresent = /present/i.test(datePart);
+		return {
+			start: years[0] ?? '?',
+			end: isPresent ? 'Present' : (years.at(-1) ?? years[0] ?? '?'),
+			isPresent,
+		};
+	}
+
+	const projectDates = projects.map(p => extractDate(p.platform));
+
+	let activeIndex = $state(0);
+	let rowEls = $state<(HTMLElement | undefined)[]>([]);
+
+	let fillPct = $derived(
+		projects.length <= 1 ? 0 : (activeIndex / (projects.length - 1)) * 100
+	);
+
+	function markerTop(i: number) {
+		return projects.length <= 1 ? '0%' : `${(i / (projects.length - 1)) * 100}%`;
+	}
+
+	onMount(() => {
+		const visible = new Set<number>();
+
+		const observer = new IntersectionObserver((entries) => {
+			for (const entry of entries) {
+				const idx = parseInt((entry.target as HTMLElement).dataset.idx ?? '0');
+				if (entry.isIntersecting) visible.add(idx);
+				else visible.delete(idx);
+			}
+			if (visible.size > 0) activeIndex = Math.min(...visible);
+		}, { rootMargin: '-30% 0px -30% 0px', threshold: 0 });
+
+		rowEls.forEach(el => { if (el) observer.observe(el); });
+		return () => observer.disconnect();
+	});
+
+	// ── Modal state ───────────────────────────────────────────────────────────
 	let activeVideoUrl = $state<string | null>(null);
 
 	function getEmbedUrl(watchUrl: string): string {
@@ -32,7 +75,7 @@
 	}
 </script>
 
-<section class="pro-section">
+<section class="pro-section" id="professional">
 	<div class="container">
 		<div class="section-header" use:scrollReveal={{ y: 20 }}>
 			<span class="section-arrow">▼</span>
@@ -40,11 +83,33 @@
 		</div>
 
 		{#if projects.length > 0}
-			<div class="projects-list">
+			<div class="pro-content">
+
+				<!-- Timeline sidebar -->
+				<aside class="timeline-sidebar" aria-hidden="true">
+					<div class="tl-track">
+						<div class="tl-fill" style="height: {fillPct}%"></div>
+					</div>
+					{#each projectDates as date, i}
+						<div class="tl-marker" class:active={i <= activeIndex} style="top: {markerTop(i)}">
+							<div class="tl-dot"></div>
+							<div class="tl-label">
+								<span class="tl-year">{date.isPresent && i === 0 ? 'Now' : date.start}</span>
+								{#if date.end !== date.start && !date.isPresent}
+									<span class="tl-year-end">{date.end}</span>
+								{/if}
+							</div>
+						</div>
+					{/each}
+				</aside>
+
+				<div class="projects-list">
 				{#each projects as project, i}
 					<article
 						class="project-row"
 						class:reverse={i % 2 === 1}
+						bind:this={rowEls[i]}
+						data-idx={i}
 						use:scrollReveal={{ y: 50 }}
 					>
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -144,7 +209,9 @@
 						</div>
 					</article>
 				{/each}
-			</div>
+				</div><!-- /projects-list -->
+
+			</div><!-- /pro-content -->
 		{:else}
 			<p class="empty-state">— No professional projects listed yet.</p>
 		{/if}
@@ -185,6 +252,7 @@
 <style>
 	.pro-section {
 		position: relative;
+		z-index: 2;
 		padding: 6rem 0;
 		margin-bottom: 12rem;
 		background: linear-gradient(
@@ -242,6 +310,100 @@
 		letter-spacing: 0.12em;
 		color: var(--color-text-muted);
 		margin: 0;
+	}
+
+	/* ── Timeline ── */
+	.pro-content {
+		display: grid;
+		grid-template-columns: 72px 1fr;
+		align-items: start;
+		gap: 0;
+	}
+
+	.timeline-sidebar {
+		position: relative;
+		align-self: stretch;
+	}
+
+	.tl-track {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 10px;
+		bottom: 10px;
+		width: 1px;
+		background: var(--color-muted);
+	}
+
+	.tl-fill {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: var(--color-primary);
+		transition: height 0.4s ease;
+	}
+
+	.tl-marker {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+		transition: color 0.3s ease;
+		color: var(--color-text-muted);
+	}
+
+	.tl-marker.active {
+		color: var(--color-primary);
+	}
+
+	.tl-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		border: 1.5px solid currentColor;
+		background: var(--color-background-themes);
+		transition: background 0.3s ease, transform 0.3s ease;
+		flex-shrink: 0;
+	}
+
+	.tl-marker.active .tl-dot {
+		background: var(--color-primary);
+		transform: scale(1.3);
+	}
+
+	.tl-label {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1px;
+	}
+
+	.tl-year {
+		font-family: var(--font-mono), monospace;
+		font-size: 0.6rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		white-space: nowrap;
+	}
+
+	.tl-year-end {
+		font-family: var(--font-mono), monospace;
+		font-size: 0.52rem;
+		opacity: 0.6;
+		white-space: nowrap;
+	}
+
+	@media (max-width: 768px) {
+		.pro-content {
+			grid-template-columns: 1fr;
+		}
+		.timeline-sidebar {
+			display: none;
+		}
 	}
 
 	/* ── Project rows ── */

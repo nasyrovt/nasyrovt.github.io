@@ -4,76 +4,68 @@
 	interface BlogPost {
 		title: string;
 		description: string;
-		date: string;
 		tags: string[];
-		url?: string;
 	}
 
 	interface VideoEntry {
 		title: string;
 		description: string;
-		duration: string;
 		platform: string;
 		tags: string[];
-		url?: string;
+		driveId?: string;
 	}
 
 	const blogs: BlogPost[] = [
 		{
-			title: 'Building AI Enemies in Unreal Engine 5',
-			description:
-				'A deep dive into Behavior Trees and the Environment Query System for creating challenging enemy AI that reacts intelligently to player actions.',
-			date: '2024-12-15',
-			tags: ['UE5', 'AI', 'C++'],
-			url: '#',
+			title: 'Home Made Audio Tools (Post-Mortem)',
+			description: "A retrospective on building custom in-house audio tooling — what worked, what broke, and what I'd do differently.",
+			tags: ['Audio', 'Tools', 'Post-Mortem'],
 		},
 		{
-			title: 'Multiplayer Architecture Patterns in UE5',
-			description:
-				'Exploring replication strategies, lag compensation, and server authority for building robust competitive multiplayer experiences.',
-			date: '2024-10-28',
-			tags: ['UE5', 'Networking', 'Multiplayer'],
-			url: '#',
-		},
-		{
-			title: 'From Unity to Unreal: A Practical Guide',
-			description:
-				'Key mental-model shifts, workflow differences, and practical tips for Unity developers making the jump to Unreal Engine.',
-			date: '2024-08-10',
-			tags: ['UE5', 'Unity', 'Gamedev'],
-			url: '#',
+			title: 'You should ship games with MetaSound',
+			description: 'Why MetaSound is a game-changer for procedural and adaptive audio in Unreal Engine, and how to get started.',
+			tags: ['UE5', 'MetaSound', 'Audio'],
 		},
 	];
 
 	const videos: VideoEntry[] = [
 		{
-			title: 'Procedural Dungeon Generation — Full Breakdown',
-			description:
-				'Step-by-step walkthrough of a procedural dungeon generator in UE5 using BSP trees, room templates, and corridor logic.',
-			duration: '24:15',
-			platform: 'YouTube',
-			tags: ['UE5', 'Procedural', 'Tutorial'],
-			url: '#',
+			title: 'Self-made audio tools',
+			description: 'Presented at PLAION DevSummit Montpellier 2024.',
+			platform: 'Google Drive',
+			tags: ['Tech Audio', 'Unreal Engine', 'MetaSound'],
+			driveId: '1rf1G_TyQ52ZoAl_fEWvfVKb_JeE0_x7E',
 		},
 		{
 			title: 'Third-Person Combat System from Scratch',
-			description:
-				'Building a full combat system — combo attacks, blocking, dodging, and hit reactions — entirely in Unreal Animation Blueprint.',
-			duration: '38:42',
-			platform: 'YouTube',
+			description: 'Building a full combat system — combo attacks, blocking, dodging, and hit reactions — entirely in Unreal Animation Blueprint.',
+			platform: 'Coming Soon',
 			tags: ['UE5', 'Combat', 'Animation'],
-			url: '#',
 		},
 	];
 
-	function formatDate(iso: string) {
-		return new Date(iso).toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		});
+	let blogCols = $derived(blogs.length <= 1 ? 1 : blogs.length <= 2 ? 2 : 3);
+	let videoCols = $derived(videos.length <= 1 ? 1 : 2);
+
+	let activeVideo = $state<VideoEntry | null>(null);
+
+	function openVideo(video: VideoEntry) {
+		activeVideo = video;
+		document.body.style.overflow = 'hidden';
 	}
 
+	function closeVideo() {
+		activeVideo = null;
+		document.body.style.overflow = '';
+	}
+
+	function onBackdropKey(e: KeyboardEvent) {
+		if (e.key === 'Escape') closeVideo();
+	}
+
+	function driveEmbedUrl(id: string) {
+		return `https://drive.google.com/file/d/${id}/preview`;
+	}
 </script>
 
 <section class="pub-section" id="publications">
@@ -96,6 +88,7 @@
 
 			<div
 				class="blog-grid"
+				style="--cols: {blogCols}"
 				use:scrollReveal={{ children: true, stagger: 0.08, y: 24 }}
 			>
 				{#each blogs as post}
@@ -110,16 +103,7 @@
 									<span class="tag">{tag}</span>
 								{/each}
 							</div>
-							<div class="card-meta">
-								<span class="card-date">{formatDate(post.date)}</span>
-								{#if post.url && post.url !== '#'}
-									<a href={post.url} target="_blank" rel="noopener noreferrer" class="card-link">
-										READ →
-									</a>
-								{:else}
-									<span class="card-link card-link--soon">COMING SOON</span>
-								{/if}
-							</div>
+							<span class="card-link card-link--soon">COMING SOON</span>
 						</div>
 					</article>
 				{/each}
@@ -136,20 +120,32 @@
 
 			<div
 				class="video-grid"
+				style="--cols: {videoCols}"
 				use:scrollReveal={{ children: true, stagger: 0.1, y: 24 }}
 			>
 				{#each videos as video}
-					<article class="pub-card video-card">
-						<!-- Thumbnail placeholder -->
-						<div class="video-thumb" aria-hidden="true">
-							<div class="thumb-play">▶</div>
-							<div class="thumb-duration">{video.duration}</div>
-							<div class="thumb-grid"></div>
+					<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+					<article
+						class="pub-card video-card"
+						class:playable={!!video.driveId}
+						onclick={() => video.driveId && openVideo(video)}
+						onkeydown={(e) => e.key === 'Enter' && video.driveId && openVideo(video)}
+						role={video.driveId ? 'button' : undefined}
+						tabindex={video.driveId ? 0 : undefined}
+					>
+						<div class="video-thumb">
+							<div class="thumb-grid" aria-hidden="true"></div>
+							{#if video.driveId}
+								<div class="thumb-play-btn" aria-hidden="true">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+								</div>
+							{:else}
+								<div class="thumb-coming" aria-hidden="true">COMING SOON</div>
+							{/if}
 						</div>
 						<div class="card-body">
 							<div class="video-meta-row">
-								<span class="video-platform">{video.platform}</span>
-								<span class="video-duration-inline">{video.duration}</span>
+								<span class="video-platform" class:drive={video.platform === 'Google Drive'}>{video.platform}</span>
 							</div>
 							<h4 class="card-title">{video.title}</h4>
 							<p class="card-desc">{video.description}</p>
@@ -160,10 +156,8 @@
 									<span class="tag">{tag}</span>
 								{/each}
 							</div>
-							{#if video.url && video.url !== '#'}
-								<a href={video.url} target="_blank" rel="noopener noreferrer" class="card-link">
-									WATCH →
-								</a>
+							{#if video.driveId}
+								<span class="card-link">WATCH ▶</span>
 							{:else}
 								<span class="card-link card-link--soon">COMING SOON</span>
 							{/if}
@@ -176,12 +170,44 @@
 	</div>
 </section>
 
+<!-- Video modal -->
+{#if activeVideo}
+	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+	<div
+		class="modal-backdrop"
+		onclick={closeVideo}
+		onkeydown={onBackdropKey}
+		role="dialog"
+		aria-modal="true"
+		aria-label="Video player"
+		tabindex="-1"
+	>
+		<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+		<div class="modal-box" onclick={(e) => e.stopPropagation()}>
+			<div class="modal-header">
+				<span class="modal-title">▶ {activeVideo.title}</span>
+				<button class="modal-close" onclick={closeVideo} aria-label="Close">✕</button>
+			</div>
+			<div class="video-wrapper">
+				<iframe
+					src={driveEmbedUrl(activeVideo.driveId!)}
+					title={activeVideo.title}
+					frameborder="0"
+					allow="autoplay"
+					allowfullscreen
+				></iframe>
+			</div>
+		</div>
+	</div>
+{/if}
+
 <style>
 	/* ── Section shell ──────────────────────────────────────────────────────── */
 	.pub-section {
 		padding: 5rem 0 4rem;
 		margin-bottom: 12rem;
 		position: relative;
+		z-index: 2;
 		background: linear-gradient(
 			135deg,
 			color-mix(in srgb, var(--color-background-themes) 85%, var(--color-secondary)) 0%,
@@ -213,9 +239,6 @@
 	.container {
 		position: relative;
 		z-index: 3;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 1.5rem;
 	}
 
 	/* ── Section header ─────────────────────────────────────────────────────── */
@@ -296,33 +319,43 @@
 
 	/* ── Blog grid ──────────────────────────────────────────────────────────── */
 	.blog-grid {
-		display: grid;
-		grid-template-columns: 1fr;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1rem;
 	}
 
-	@media (min-width: 640px) {
-		.blog-grid {
-			grid-template-columns: repeat(2, 1fr);
+	.blog-grid .pub-card {
+		flex: 0 0 calc((100% - (var(--cols, 3) - 1) * 1rem) / var(--cols, 3));
+	}
+
+	@media (max-width: 900px) {
+		.blog-grid .pub-card {
+			flex: 0 0 calc((100% - 1rem) / 2);
 		}
 	}
 
-	@media (min-width: 1024px) {
-		.blog-grid {
-			grid-template-columns: repeat(3, 1fr);
+	@media (max-width: 560px) {
+		.blog-grid .pub-card {
+			flex: 0 0 100%;
 		}
 	}
 
 	/* ── Video grid ─────────────────────────────────────────────────────────── */
 	.video-grid {
-		display: grid;
-		grid-template-columns: 1fr;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1rem;
 	}
 
-	@media (min-width: 640px) {
-		.video-grid {
-			grid-template-columns: repeat(2, 1fr);
+	.video-grid .pub-card {
+		flex: 0 0 calc((100% - (var(--cols, 2) - 1) * 1rem) / var(--cols, 2));
+	}
+
+	@media (max-width: 560px) {
+		.video-grid .pub-card {
+			flex: 0 0 100%;
 		}
 	}
 
@@ -430,9 +463,13 @@
 	}
 
 	/* ── Video-specific ─────────────────────────────────────────────────────── */
+	.video-card.playable {
+		cursor: pointer;
+	}
+
 	.video-thumb {
 		position: relative;
-		height: 120px;
+		height: 140px;
 		background: #080c10;
 		border-bottom: 1px solid var(--color-muted);
 		display: flex;
@@ -450,26 +487,35 @@
 		background-size: 24px 24px;
 	}
 
-	.thumb-play {
+	.thumb-play-btn {
 		position: relative;
 		z-index: 2;
-		font-size: 1.5rem;
-		color: rgba(255, 255, 255, 0.15);
-		line-height: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		border: 1.5px solid rgba(255,255,255,0.25);
+		color: rgba(255,255,255,0.6);
+		transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 	}
 
-	.thumb-duration {
-		position: absolute;
-		bottom: 6px;
-		right: 8px;
+	.video-card.playable:hover .thumb-play-btn {
+		border-color: var(--color-primary);
+		color: var(--color-primary);
+		background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+	}
+
+	.thumb-coming {
+		position: relative;
 		z-index: 2;
 		font-family: var(--font-mono), monospace;
-		font-size: 0.6rem;
+		font-size: 0.55rem;
 		font-weight: 700;
-		color: rgba(255,255,255,0.5);
-		background: rgba(0,0,0,0.5);
-		padding: 0.1rem 0.35rem;
-		border-radius: 2px;
+		letter-spacing: 0.12em;
+		color: rgba(255,255,255,0.2);
+		text-transform: uppercase;
 	}
 
 	.video-meta-row {
@@ -484,16 +530,87 @@
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		color: #ef5350;
-		border: 1px solid rgba(239, 83, 80, 0.3);
+		color: var(--color-text-muted);
+		border: 1px solid var(--color-muted);
 		padding: 0.1rem 0.35rem;
 		border-radius: 1px;
 	}
 
-	.video-duration-inline {
+	.video-platform.drive {
+		color: #4da6ff;
+		border-color: rgba(77,166,255,0.3);
+	}
+
+	/* ── Modal ──────────────────────────────────────────────────────────────── */
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.85);
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem;
+		backdrop-filter: blur(6px);
+	}
+
+	.modal-box {
+		width: 100%;
+		max-width: 1000px;
+		background: #0d0d0d;
+		border: 1px solid #2e2e2e;
+		border-radius: 2px;
+		overflow: hidden;
+		box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
+	}
+
+	.modal-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.6rem 1rem;
+		border-bottom: 1px solid #2e2e2e;
+		background: #1a1a1a;
+	}
+
+	.modal-title {
 		font-family: var(--font-mono), monospace;
-		font-size: 0.55rem;
-		color: var(--color-text-muted);
-		opacity: 0.6;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: var(--color-primary);
+		text-transform: uppercase;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.modal-close {
+		background: none;
+		border: none;
+		color: #5e5e5e;
+		font-size: 0.9rem;
+		cursor: pointer;
+		padding: 0.1rem 0.3rem;
+		line-height: 1;
+		transition: color 0.15s ease;
+		flex-shrink: 0;
+	}
+
+	.modal-close:hover { color: #e0e0e0; }
+
+	.video-wrapper {
+		position: relative;
+		aspect-ratio: 16 / 9;
+		width: 100%;
+		background: #000;
+	}
+
+	.video-wrapper iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
 	}
 </style>

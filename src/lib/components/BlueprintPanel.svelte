@@ -253,4 +253,11 @@
 		color: #3a4a5a;
 		white-space: nowrap;
 	}
+
+	@media (max-width: 768px) {
+		.bp-panel,
+		.bp-tab {
+			display: none !important;
+		}
+	}
 </style>

@@ -43,4 +43,10 @@
 		transition: padding-left var(--bp-transition, 0.25s cubic-bezier(0.4, 0, 0.2, 1));
 		min-height: 100vh;
 	}
+
+	@media (max-width: 768px) {
+		.site-content {
+			padding-left: 0 !important;
+		}
+	}
 </style>

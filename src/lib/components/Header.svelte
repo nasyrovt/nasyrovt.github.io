@@ -98,4 +98,10 @@
 		background-color: color-mix(in srgb, var(--color-primary) 80%, white 20%);
 		opacity: 1;
 	}
+
+	@media (max-width: 768px) {
+		.header {
+			left: 0 !important;
+		}
+	}
 </style>

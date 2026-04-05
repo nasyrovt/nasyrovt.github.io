@@ -12,6 +12,13 @@
 	let { projects, title, id = 'projects', first = false }: Props = $props();
 
 	let activeCardIndex = $state<number | null>(null);
+
+	let cols = $derived(
+		projects.length <= 1 ? 1 :
+		projects.length <= 2 ? 2 :
+		projects.length <= 4 ? 3 :
+		4
+	);
 </script>
 
 <section class="projects-section" class:first {id}>
@@ -22,7 +29,7 @@
 		</div>
 
 		{#if projects.length > 0}
-			<div class="projects-grid" use:scrollReveal={{ children: true, stagger: 0.1, y: 40 }}>
+			<div class="projects-grid" style="--cols: {cols}" use:scrollReveal={{ children: true, stagger: 0.1, y: 40 }}>
 				{#each projects as project, i}
 					<ProjectCard
 					{project}
@@ -41,6 +48,7 @@
 <style>
 	.projects-section {
 		position: relative;
+		z-index: 2;
 		padding: 6rem 0;
 		margin-bottom: 12rem;
 		background: linear-gradient(
@@ -102,9 +110,26 @@
 	}
 
 	.projects-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1.5rem;
+	}
+
+	.projects-grid :global(.project-card) {
+		flex: 0 0 calc((100% - (var(--cols, 4) - 1) * 1.5rem) / var(--cols, 4));
+	}
+
+	@media (max-width: 900px) {
+		.projects-grid :global(.project-card) {
+			flex: 0 0 calc((100% - 1.5rem) / 2);
+		}
+	}
+
+	@media (max-width: 560px) {
+		.projects-grid :global(.project-card) {
+			flex: 0 0 100%;
+		}
 	}
 
 	.empty-state {

@@ -165,6 +165,7 @@
 		padding: 6rem 0;
 		margin-bottom: 12rem;
 		position: relative;
+		z-index: 2;
 		background: linear-gradient(
 			135deg,
 			color-mix(in srgb, var(--color-background-themes) 85%, var(--color-primary)) 0%,
