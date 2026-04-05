@@ -4,11 +4,11 @@
   description: "Narrative adventure game developed at DigixArt Studio. Contributed as Gameplay, Tools & Audio Programmer — implementing game mechanics, building internal development tools to streamline team workflows, integrating the audio systems, and porting the game to PlayStation."
   image: "/images/projects/tides-of-tomorrow.jpg"
   videoUrl: "https://www.youtube.com/watch?v=wy7TP81eBc8"
-  genre: "Narrative Adventure"
-  stack: "Unreal Engine 5 / C++"
-  targetAudience: "16+ aged"
-  controls: "Keyboard + Mouse / Controller"
-  platform: "PC / Console"
+  steam: "https://store.steampowered.com/app/2678080/Tides_of_Tomorrow/"
+  genre: "Unreal Engine Gameplay Developer"
+  stack: "Unreal Engine 5 · C++ · Blueprint"
+  platform: "Apprenticeship · Montpellier, France · May 2023 – Present"
+  tags: ["Unreal Engine 5", "Gameplay", "Tech Audio", "Tools", "PlayStation"]
   shapes:
     - type: "donut"
       color: "indigo"
@@ -22,3 +22,72 @@
       xOffset: ["140px"]
       yOffset: ["-50px", "-80px"]
       opacity: 0.8
+
+- title: "Cabri Express"
+  url: "https://cabri.com/fr/eleve/cabri-express/index.html"
+  preview: "https://app.cabriexpress.com/?level=secondary"
+  description: "Engine development for Cabrilog's educational geometry platform Cabri Express. Built and maintained 2D/3D geometry tools used by students and teachers worldwide, working on the core rendering engine and cross-platform web integration."
+  image: "/images/projects/cabrilog.png"
+  genre: "Full Stack Engine Developer"
+  stack: "C / C++ · Qt · OpenGL · VueJS · BabylonJS"
+  platform: "Apprenticeship · Fontaine, France · Oct 2022 – May 2023"
+  tags: ["C++", "OpenGL", "Qt", "WebGL", "Cross-Platform"]
+  shapes:
+    - type: "circle"
+      color: "teal"
+      size: ["80px", "140px"]
+      xOffset: ["-50px"]
+      yOffset: ["60px", "120px"]
+      opacity: 0.9
+    - type: "donut"
+      color: "indigo"
+      size: ["70px", "130px"]
+      xOffset: ["120px"]
+      yOffset: ["-40px", "-70px"]
+      opacity: 0.7
+
+- title: "Unity Narration Tool"
+  url: "https://www.facebook.com/emoface/?locale=fr_FR"
+  preview: "https://apps.apple.com/fr/app/emoface-play-learn-emotions/id1343826335"
+  description: "Designed and developed an internal narration tool for Emoface's Unity-based projects. Enabled non-technical team members to author story sequences directly in the editor. Also worked on motion capture pipelines for character animation."
+  image: "/images/projects/emoface.png"
+  genre: "Unity Tools Developer"
+  stack: "Unity · C# · Motion Capture"
+  platform: "Internship · Meylan, France · May 2022 – Aug 2022"
+  tags: ["Unity", "C#", "Editor Tools", "Motion Capture", "Narrative"]
+  shapes:
+    - type: "circle"
+      color: "purple"
+      size: ["90px", "160px"]
+      xOffset: ["-60px"]
+      yOffset: ["80px", "140px"]
+      opacity: 0.85
+    - type: "donut"
+      color: "pink"
+      size: ["50px", "90px"]
+      xOffset: ["100px"]
+      yOffset: ["-30px", "-60px"]
+      opacity: 0.7
+
+- title: ".NET Full Stack App"
+  url: ""
+  preview: ""
+  description: "Freelance full-stack development for a US-based client. Built a web application using C#/.NET 6 as the backend and Angular 13 as the frontend. Also developed a WPF desktop application for CSV data transformation and processing."
+  image: "/images/projects/dotnet.png"
+  genre: ".NET Full Stack Developer"
+  stack: "C# · .NET 6 · Angular 13 · WPF"
+  platform: "Freelance · Remote · Feb 2022 – May 2023"
+  tags: ["C#", ".NET 6", "WPF", "WinSCP", "DB", "JS", "jQuery"]
+  shapes:
+    - type: "donut"
+      color: "orange"
+      size: ["75px", "135px"]
+      xOffset: ["-45px"]
+      yOffset: ["70px", "130px"]
+      opacity: 0.8
+    - type: "circle"
+      color: "indigo"
+      size: ["55px", "95px"]
+      xOffset: ["110px"]
+      yOffset: ["-35px", "-65px"]
+      opacity: 0.75

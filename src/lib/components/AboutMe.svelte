@@ -61,32 +61,69 @@
 			<h2 class="panel-title">ABOUT ME</h2>
 		</div>
 
-		<div class="about-grid" use:scrollReveal={{ children: true, stagger: 0.1, y: 30 }}>
-			<div class="about-card">
-				<div class="card-header"><span>▶</span> BACKGROUND</div>
-				<p>
-					I'm a passionate game developer with experience in Unreal Engine and Unity. I enjoy
-					creating immersive gameplay experiences and constantly learning new technologies. From
-					third-person shooters to hyper-casual mobile games, I love exploring different genres
-					and mechanics.
-				</p>
+		<div class="bio-layout" use:scrollReveal={{ y: 30 }}>
+			<!-- Photo -->
+			<div class="photo-wrap">
+				<img src="/images/photo.jpg" alt="Takhir Nasyrov" class="photo" />
 			</div>
 
-			<div class="about-card">
-				<div class="card-header"><span>▶</span> EDUCATION</div>
-				<p>
-					Currently pursuing my studies in game development and computer science. I believe in
-					learning by doing — every project in my portfolio represents a step in my journey as a
-					developer.
-				</p>
-			</div>
+			<!-- Right column -->
+			<div class="bio-right">
+				<!-- Row 1: What I Do + Contact -->
+				<div class="bio-row-top">
+					<div class="about-card">
+						<div class="card-header"><span>▶</span> WHAT I DO</div>
+						<ul class="what-list">
+							<li>
+								<span class="what-label">Gameplay Programming</span>
+								<span class="what-desc">Building game mechanics, player controllers, interaction systems and game loops in Unreal Engine 5 and Unity using C++ and C#.</span>
+							</li>
+							<li>
+								<span class="what-label">Tools Development</span>
+								<span class="what-desc">Creating editor plugins and internal pipeline tools that reduce friction for artists and designers and speed up iteration.</span>
+							</li>
+							<li>
+								<span class="what-label">Audio Integration</span>
+								<span class="what-desc">Wiring adaptive audio systems, triggering and blending sound cues in response to gameplay events and environment state.</span>
+							</li>
+							<li>
+								<span class="what-label">Console Porting</span>
+								<span class="what-desc">Adapting PC builds for console platforms — input remapping, performance profiling and platform certification compliance.</span>
+							</li>
+							</ul>
+					</div>
+					<ContactCTA />
+				</div>
 
-			<div class="about-card">
-				<div class="card-header"><span>▶</span> WHAT I DO</div>
-				<p>
-					I specialize in gameplay programming, AI systems, networking/multiplayer, and creative
-					coding. I work with C++, C#, and modern web technologies to bring ideas to life.
-				</p>
+				<!-- Row 2: Background + Education -->
+				<div class="bio-row-bottom">
+					<div class="about-card">
+						<div class="card-header"><span>▶</span> BACKGROUND</div>
+						<p>
+							I'm a passionate game developer with experience in Unreal Engine and Unity. I enjoy
+							creating immersive gameplay experiences and constantly learning new technologies. From
+							third-person shooters to hyper-casual mobile games, I love exploring different genres
+							and mechanics.
+						</p>
+					</div>
+					<div class="about-card">
+						<div class="card-header"><span>▶</span> EDUCATION</div>
+						<ul class="edu-list">
+							<li class="edu-item">
+								<span class="edu-title">MSc Game Programming & Design</span>
+								<span class="edu-meta">Lyon Ynov Campus · 2022 – 2024</span>
+							</li>
+							<li class="edu-item">
+								<span class="edu-title">BSc Computer Science</span>
+								<span class="edu-meta">Université Grenoble Alpes · 2020 – 2022</span>
+							</li>
+							<li class="edu-item">
+								<span class="edu-title">BSc Mechanical Engineering</span>
+								<span class="edu-meta">Université Grenoble Alpes · 2015 – 2020</span>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -120,9 +157,6 @@
 			</div>
 		</div>
 
-		<div class="contact-wrapper" use:scrollReveal={{ y: 30 }}>
-			<ContactCTA />
-		</div>
 	</div>
 </section>
 
@@ -189,8 +223,8 @@
 		margin: 0;
 	}
 
-	/* ── Bio cards ────────────────────────────────────────────────────────── */
-	.about-grid {
+	/* ── Bio layout ───────────────────────────────────────────────────────── */
+	.bio-layout {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 1.5rem;
@@ -198,8 +232,47 @@
 	}
 
 	@media (min-width: 768px) {
-		.about-grid {
-			grid-template-columns: repeat(3, 1fr);
+		.bio-layout {
+			grid-template-columns: 220px 1fr;
+			align-items: start;
+		}
+	}
+
+	/* ── Photo ────────────────────────────────────────────────────────────── */
+	.photo-wrap {
+		border: 1px solid var(--color-muted);
+		border-radius: 2px;
+		overflow: hidden;
+		position: relative;
+		aspect-ratio: 3 / 4;
+	}
+
+	.photo {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 50% 8%;
+		display: block;
+	}
+
+	/* ── Right column ─────────────────────────────────────────────────────── */
+	.bio-right {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.bio-row-top,
+	.bio-row-bottom {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 640px) {
+		.bio-row-top,
+		.bio-row-bottom {
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 
@@ -240,6 +313,56 @@
 		line-height: 1.6;
 		font-size: 0.875rem;
 		margin: 0;
+	}
+
+	.edu-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.edu-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		padding: 0.55rem 0.75rem;
+		border-bottom: 1px solid var(--color-muted);
+	}
+
+	.edu-item:last-child {
+		border-bottom: none;
+	}
+
+	.what-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.what-list li {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		padding: 0.55rem 0.75rem;
+		border-bottom: 1px solid var(--color-muted);
+	}
+
+	.what-list li:last-child {
+		border-bottom: none;
+	}
+
+	.what-label {
+		font-size: 0.65rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-primary);
+	}
+
+	.what-desc {
+		font-size: 0.75rem;
+		color: var(--color-text-muted);
+		line-height: 1.5;
 	}
 
 	/* ── Technologies ─────────────────────────────────────────────────────── */
@@ -340,8 +463,4 @@
 	}
 
 	/* ── Contact ──────────────────────────────────────────────────────────── */
-	.contact-wrapper {
-		max-width: 600px;
-		margin: 0 auto;
-	}
 </style>

@@ -240,7 +240,7 @@ main {
 
 /* ── Utility ── */
 .container {
-	max-width: 1600px;
+	max-width: min(95vw, 2000px);
 	margin: 0 auto;
 	padding: 0 2rem;
 }

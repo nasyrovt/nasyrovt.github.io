@@ -7,6 +7,8 @@ export interface Project {
 	description: string;
 	image: string;
 	videoUrl?: string;
+	steam?: string;
+	tags?: string[];
 	genre?: string;
 	stack?: string;
 	targetAudience?: string;

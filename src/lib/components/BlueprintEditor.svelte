@@ -56,7 +56,7 @@
 		},
 		{
 			id: 'fn-prof',
-			title: 'Professional Projects',
+			title: 'Professional Experience',
 			subtitle: 'Section',
 			headerColor: '#114d8c',
 			x: 150, y: 264, width: 255,

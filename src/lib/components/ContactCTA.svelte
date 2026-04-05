@@ -5,7 +5,7 @@
 <div class="contact-cta">
 	<div class="cta-header">
 		<span class="cta-header-arrow">▶</span>
-		<span class="cta-header-label">GET IN TOUCH</span>
+		<span class="cta-header-label">CONTACTS</span>
 	</div>
 	<div class="cta-body">
 		<h3 class="cta-title">Get in Touch</h3>
