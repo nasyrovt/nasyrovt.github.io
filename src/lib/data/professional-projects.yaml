@@ -1,1 +1,24 @@
-[]
+- title: "Tides of Tomorrow"
+  url: "https://www.digixart.com"
+  preview: ""
+  description: "Narrative adventure game developed at DigixArt Studio. Contributed as Gameplay, Tools & Audio Programmer — implementing game mechanics, building internal development tools to streamline team workflows, integrating the audio systems, and porting the game to PlayStation."
+  image: "/images/projects/tides-of-tomorrow.png"
+  videoUrl: "https://www.youtube.com/watch?v=wy7TP81eBc8"
+  genre: "Narrative Adventure"
+  stack: "Unreal Engine 5 / C++"
+  targetAudience: "16+ aged"
+  controls: "Keyboard + Mouse / Controller"
+  platform: "PC / Console"
+  shapes:
+    - type: "donut"
+      color: "indigo"
+      size: ["100px", "200px"]
+      xOffset: ["-70px"]
+      yOffset: ["100px", "180px"]
+      opacity: 1
+    - type: "circle"
+      color: "teal"
+      size: ["60px", "110px"]
+      xOffset: ["140px"]
+      yOffset: ["-50px", "-80px"]
+      opacity: 0.8

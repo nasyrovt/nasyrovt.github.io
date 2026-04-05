@@ -2,51 +2,21 @@
 	import type { Project } from '$lib/types';
 	import ProjectCard from './ProjectCard.svelte';
 	import { scrollReveal } from '$lib/utils/gsap';
-	import { theme } from '$lib/stores/theme';
-
+	import { parallax } from '$lib/utils/parallax';
 	interface Props {
 		projects: Project[];
 		title: string;
 		id?: string;
 		first?: boolean;
-		accent?: 'indigo' | 'teal' | 'orange' | 'purple' | 'pink';
 	}
 
-	let { projects, title, id = 'projects', first = false, accent = 'indigo' }: Props = $props();
+	let { projects, title, id = 'projects', first = false }: Props = $props();
 
-	const light: Record<string, string> = {
-		indigo: '#e8eaf6',
-		teal:   '#e0f2f1',
-		orange: '#fff3e0',
-		purple: '#ede7f6',
-		pink:   '#fce4ec',
-	};
-
-	const dark: Record<string, string> = {
-		indigo: '#101020',
-		teal:   '#0a1818',
-		orange: '#1a1000',
-		purple: '#120a1e',
-		pink:   '#1a0810',
-	};
-
-	const stranger: Record<string, string> = {
-		indigo: '#1a0505',
-		teal:   '#1a0505',
-		orange: '#1a0505',
-		purple: '#1a0505',
-		pink:   '#1a0505',
-	};
-
-	let sectionBg = $derived(
-		$theme === 'dark'           ? dark[accent]     :
-		$theme === 'strangerThings' ? stranger[accent]  :
-		                              light[accent]
-	);
+	let activeCardIndex = $state<number | null>(null);
 </script>
 
-<section class="projects-section" class:first {id} style="--section-bg: {sectionBg}">
-	<div class="container">
+<section class="projects-section" class:first {id}>
+	<div class="container" use:parallax={{ speed: 0.08 }}>
 		<div class="section-header" use:scrollReveal={{ y: 20 }}>
 			<span class="section-arrow">▼</span>
 			<h2 class="section-title">{title}</h2>
@@ -55,7 +25,12 @@
 		{#if projects.length > 0}
 			<div class="projects-grid" use:scrollReveal={{ children: true, stagger: 0.1, y: 40 }}>
 				{#each projects as project, i}
-					<ProjectCard {project} index={i} />
+					<ProjectCard
+					{project}
+					index={i}
+					active={activeCardIndex === i}
+					onActivate={(idx) => { activeCardIndex = activeCardIndex === idx ? null : idx; }}
+				/>
 				{/each}
 			</div>
 		{:else}
@@ -68,29 +43,27 @@
 	.projects-section {
 		position: relative;
 		padding: 6rem 0;
-		background-color: var(--section-bg);
-		background-size: cover;
-		background-position: center;
+		margin-bottom: 12rem;
+		overflow: hidden;
+		background-color: var(--color-background-themes);
 	}
 
-	/* Fast gradient fade in from the 3D scene */
 	.projects-section::before {
 		content: '';
 		position: absolute;
 		inset: 0 0 auto 0;
-		height: 90px;
-		background: linear-gradient(to bottom, transparent, var(--section-bg));
+		height: 80px;
+		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
 		pointer-events: none;
 		z-index: 2;
 	}
 
-	/* Fast gradient fade out to the 3D scene */
 	.projects-section::after {
 		content: '';
 		position: absolute;
 		inset: auto 0 0 0;
-		height: 90px;
-		background: linear-gradient(to top, transparent, var(--section-bg));
+		height: 80px;
+		background: linear-gradient(to top, transparent, var(--color-background-themes));
 		pointer-events: none;
 		z-index: 2;
 	}

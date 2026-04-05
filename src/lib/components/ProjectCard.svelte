@@ -4,11 +4,12 @@
 	interface Props {
 		project: Project;
 		index: number;
+		active?: boolean;
+		onActivate?: (index: number) => void;
 	}
 
-	let { project, index }: Props = $props();
+	let { project, index, active = false, onActivate }: Props = $props();
 
-	let tooltipVisible = $state(false);
 	let arrowOnLeft = $state(true);
 	let cardEl: HTMLElement;
 	let tooltipStyle = $state('');
@@ -20,7 +21,6 @@
 		const rect = cardEl.getBoundingClientRect();
 		const viewportWidth = window.innerWidth;
 
-		// Prefer right side; fall back to left
 		let left = rect.right + GAP;
 		arrowOnLeft = true;
 		if (left + TOOLTIP_WIDTH > viewportWidth - 16) {
@@ -35,22 +35,13 @@
 
 	function toggleTooltip(e: MouseEvent) {
 		e.stopPropagation();
-		if (tooltipVisible) {
-			tooltipVisible = false;
-		} else {
-			positionTooltip();
-			tooltipVisible = true;
-		}
-	}
-
-	function hideTooltip() {
-		tooltipVisible = false;
+		if (!active) positionTooltip();
+		onActivate?.(index);
 	}
 
 	$effect(() => {
-		if (!tooltipVisible) return;
-		const handler = () => hideTooltip();
-		// Defer so the opening click doesn't immediately close the tooltip
+		if (!active) return;
+		const handler = () => onActivate?.(index);
 		const id = setTimeout(() => window.addEventListener('click', handler), 0);
 		return () => {
 			clearTimeout(id);
@@ -72,7 +63,7 @@
 	class="project-card"
 	bind:this={cardEl}
 	onclick={toggleTooltip}
-	onkeydown={(e) => { if (e.key === 'Enter') { e.stopPropagation(); positionTooltip(); tooltipVisible = !tooltipVisible; } }}
+	onkeydown={(e) => { if (e.key === 'Enter') { e.stopPropagation(); positionTooltip(); onActivate?.(index); } }}
 	role="button"
 	tabindex="0"
 >
@@ -88,7 +79,7 @@
 	</div>
 </article>
 
-{#if tooltipVisible}
+{#if active}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
 	<div

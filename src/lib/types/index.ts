@@ -6,6 +6,7 @@ export interface Project {
 	preview: string;
 	description: string;
 	image: string;
+	videoUrl?: string;
 	genre?: string;
 	stack?: string;
 	targetAudience?: string;

@@ -33,13 +33,14 @@
 	.header {
 		position: fixed;
 		top: 0;
-		left: 0;
+		left: var(--bp-offset, 0);
 		right: 0;
 		z-index: 50;
 		background-color: var(--color-background);
 		border-bottom: 1px solid var(--color-muted);
 		transition:
-			border-color 0.4s ease;
+			border-color 0.4s ease,
+			left var(--bp-transition, 0.25s cubic-bezier(0.4, 0, 0.2, 1));
 	}
 
 	.header.at-top {

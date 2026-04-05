@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
 	import Camera from './Camera.svelte';
-	import GeometricShapes from './GeometricShapes.svelte';
+	import BlueprintScene from './BlueprintScene.svelte';
 	import Particles from './Particles.svelte';
 	import Lights from './Lights.svelte';
 </script>
@@ -10,7 +10,7 @@
 	<Canvas>
 		<Camera />
 		<Lights />
-		<GeometricShapes />
+		<BlueprintScene />
 		<Particles />
 	</Canvas>
 </div>

@@ -75,33 +75,32 @@
 
 /* ── Theme: Dark (Unreal Engine-inspired) ── */
 [data-theme='dark'] {
-	/* Near-black backgrounds like UE5 editor */
-	--color-primary: #e8a020;           /* UE orange accent */
-	--color-shadow: rgba(0, 0, 0, 0.6);
-	--color-secondary: #4c9be8;         /* UE blue */
-	--color-background: #0d0d0d;        /* UE main viewport bg */
-	--color-background-themes: #1a1a1a; /* UE panel bg */
-	--color-text: #b8b8b8;              /* UE default text */
-	--color-text-muted: #5e5e5e;        /* UE inactive label */
-	--color-heading: #e0e0e0;           /* UE header text */
-	--color-muted: #2e2e2e;             /* UE border/divider */
+	--color-primary: #ff9f0a;           /* bright UE orange */
+	--color-shadow: rgba(0, 0, 0, 0.8);
+	--color-secondary: #4da6ff;         /* bright UE blue */
+	--color-background: #000000;        /* true black */
+	--color-background-themes: #111111; /* near-black panels */
+	--color-text: #e8e8e8;              /* bright readable body text */
+	--color-text-muted: #999999;        /* muted but visible */
+	--color-heading: #ffffff;           /* pure white headings */
+	--color-muted: #2a2a2a;             /* dark border — visible on black */
 
-	--gradient-blue: linear-gradient(45deg, #1a3a6b, #4c9be8);
-	--gradient-orange: linear-gradient(225deg, #e8a020, #b07010);
-	--gradient-pink: linear-gradient(135deg, #7a1a4a, #c03070);
-	--gradient-purple: linear-gradient(135deg, #3a1a6b, #6b3ab0);
-	--gradient-gray: linear-gradient(135deg, #2e2e2e, #1a1a1a);
+	--gradient-blue: linear-gradient(45deg, #0d2a50, #4da6ff);
+	--gradient-orange: linear-gradient(225deg, #ff9f0a, #c06a00);
+	--gradient-pink: linear-gradient(135deg, #6a0f3a, #d42870);
+	--gradient-purple: linear-gradient(135deg, #2e0d5e, #7c3ac8);
+	--gradient-gray: linear-gradient(135deg, #2a2a2a, #111111);
 	--gradient-black: linear-gradient(135deg, #1a1a1a, #000000);
-	--gradient-red: linear-gradient(225deg, #8b1a1a, #c03030);
-	--gradient-yellow: linear-gradient(180deg, #e8a020, #a07010);
-	--gradient-green: linear-gradient(225deg, #1a5a2a, #2a8a3a);
-	--gradient-indigo: linear-gradient(72deg, #1a1a4a, #3a3ab0);
-	--gradient-teal: linear-gradient(72deg, #0a2a2a, #1a6a6a);
-	--gradient-dark-indigo: linear-gradient(135deg, #12122e, #2a2a7a);
+	--gradient-red: linear-gradient(225deg, #7a0f0f, #d42020);
+	--gradient-yellow: linear-gradient(180deg, #ff9f0a, #9a5f00);
+	--gradient-green: linear-gradient(225deg, #0f4a1a, #1e8030);
+	--gradient-indigo: linear-gradient(72deg, #12124a, #3535c8);
+	--gradient-teal: linear-gradient(72deg, #062020, #0e6060);
+	--gradient-dark-indigo: linear-gradient(135deg, #0a0a22, #22226a);
 
-	--threlte-color-primary: #e8a020;
-	--threlte-color-secondary: #4c9be8;
-	--threlte-color-accent: #c03070;
+	--threlte-color-primary: #ff9f0a;
+	--threlte-color-secondary: #4da6ff;
+	--threlte-color-accent: #d42870;
 }
 
 /* ── Theme: Stranger Things ── */
@@ -178,16 +177,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-	background: #0d0d0d;
+	background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #2e2e2e;
+	background: #2a2a2a;
 	border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #3e3e3e;
+	background: #444444;
 }
 
 h1,
@@ -241,9 +240,9 @@ main {
 
 /* ── Utility ── */
 .container {
-	max-width: 1200px;
+	max-width: 1600px;
 	margin: 0 auto;
-	padding: 0 1rem;
+	padding: 0 2rem;
 }
 
 /* ── Floating animation ── */
