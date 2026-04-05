@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { scrollReveal } from '$lib/utils/gsap';
-	import { parallax } from '$lib/utils/parallax';
 
 	interface BlogPost {
 		title: string;
@@ -78,7 +77,7 @@
 </script>
 
 <section class="pub-section" id="publications">
-	<div class="container" use:parallax={{ speed: 0.08 }}>
+	<div class="container">
 
 		<!-- Section header -->
 		<div class="panel-header" use:scrollReveal={{ y: 20 }}>
@@ -183,8 +182,12 @@
 		padding: 5rem 0 4rem;
 		margin-bottom: 12rem;
 		position: relative;
-		overflow: hidden;
-		background-color: var(--color-background-themes);
+		background: linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--color-background-themes) 85%, var(--color-secondary)) 0%,
+			var(--color-background-themes) 50%,
+			color-mix(in srgb, var(--color-background-themes) 88%, var(--color-primary)) 100%
+		);
 	}
 
 	.pub-section::before {

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ContactCTA from './ContactCTA.svelte';
 	import { scrollReveal } from '$lib/utils/gsap';
-	import { parallax } from '$lib/utils/parallax';
 
 	const categories = [
 		{
@@ -54,7 +53,7 @@
 </script>
 
 <section class="about-section" id="about">
-	<div class="container" use:parallax={{ speed: 0.08 }}>
+	<div class="container">
 
 		<!-- ── Bio cards ─────────────────────────────────────────────────── -->
 		<div class="panel-header" use:scrollReveal={{ y: 20 }}>
@@ -132,8 +131,12 @@
 		padding: 6rem 0;
 		margin-bottom: 12rem;
 		position: relative;
-		overflow: hidden;
-		background-color: var(--color-background-themes);
+		background: linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--color-background-themes) 85%, var(--color-primary)) 0%,
+			var(--color-background-themes) 45%,
+			color-mix(in srgb, var(--color-background-themes) 90%, var(--color-secondary)) 100%
+		);
 	}
 
 	.about-section::before {

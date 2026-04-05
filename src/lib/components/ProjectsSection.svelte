@@ -2,7 +2,6 @@
 	import type { Project } from '$lib/types';
 	import ProjectCard from './ProjectCard.svelte';
 	import { scrollReveal } from '$lib/utils/gsap';
-	import { parallax } from '$lib/utils/parallax';
 	interface Props {
 		projects: Project[];
 		title: string;
@@ -16,7 +15,7 @@
 </script>
 
 <section class="projects-section" class:first {id}>
-	<div class="container" use:parallax={{ speed: 0.08 }}>
+	<div class="container">
 		<div class="section-header" use:scrollReveal={{ y: 20 }}>
 			<span class="section-arrow">▼</span>
 			<h2 class="section-title">{title}</h2>
@@ -44,8 +43,12 @@
 		position: relative;
 		padding: 6rem 0;
 		margin-bottom: 12rem;
-		overflow: hidden;
-		background-color: var(--color-background-themes);
+		background: linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--color-background-themes) 85%, var(--color-secondary)) 0%,
+			var(--color-background-themes) 45%,
+			color-mix(in srgb, var(--color-background-themes) 90%, var(--color-primary)) 100%
+		);
 	}
 
 	.projects-section::before {
