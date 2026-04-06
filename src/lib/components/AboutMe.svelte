@@ -100,10 +100,12 @@
 					<div class="about-card">
 						<div class="card-header"><span>▶</span> BACKGROUND</div>
 						<p>
-							I'm a passionate game developer with experience in Unreal Engine and Unity. I enjoy
-							creating immersive gameplay experiences and constantly learning new technologies. From
-							third-person shooters to hyper-casual mobile games, I love exploring different genres
-							and mechanics.
+							Software engineer with a strong foundation in systems programming and a specialisation
+							in Unreal Engine 5 and C++. I have hands-on experience designing backend services,
+							building reusable libraries in C#, and shipping production-grade gameplay systems.
+							I take pride in writing clean, maintainable code — whether that means architecting
+							an engine-level subsystem, exposing a well-designed API, or profiling a hot path
+							down to the last microsecond.
 						</p>
 					</div>
 					<div class="about-card">

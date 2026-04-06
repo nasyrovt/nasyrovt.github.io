@@ -808,8 +808,18 @@
 		}
 
 		.project-details {
+			padding: 1.5rem;
 			border-left: none;
 			border-top: 1px solid var(--color-muted);
+		}
+
+		.spec {
+			flex-wrap: wrap;
+			gap: 0.2rem;
+		}
+
+		.spec-value {
+			text-align: right;
 		}
 
 		.modal-backdrop {

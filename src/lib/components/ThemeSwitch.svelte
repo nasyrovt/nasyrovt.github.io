@@ -5,8 +5,7 @@
 
 	function getIcon(t: string) {
 		if (t === 'light') return '☀️';
-		if (t === 'dark') return '🌙';
-		return '👾';
+		return '🌙';
 	}
 </script>
 

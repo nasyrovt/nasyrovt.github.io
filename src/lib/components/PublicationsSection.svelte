@@ -36,12 +36,6 @@
 			tags: ['Tech Audio', 'Unreal Engine', 'MetaSound'],
 			driveId: '1rf1G_TyQ52ZoAl_fEWvfVKb_JeE0_x7E',
 		},
-		{
-			title: 'Third-Person Combat System from Scratch',
-			description: 'Building a full combat system — combo attacks, blocking, dodging, and hit reactions — entirely in Unreal Animation Blueprint.',
-			platform: 'Coming Soon',
-			tags: ['UE5', 'Combat', 'Animation'],
-		},
 	];
 
 	let blogCols = $derived(blogs.length <= 1 ? 1 : blogs.length <= 2 ? 2 : 3);

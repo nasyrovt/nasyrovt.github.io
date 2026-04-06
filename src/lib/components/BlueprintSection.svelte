@@ -4,9 +4,7 @@
 	import { theme } from '$lib/stores/theme';
 
 	let sectionBg = $derived(
-		$theme === 'dark'           ? '#080c10' :
-		$theme === 'strangerThings' ? '#0a0005'  :
-		                              '#e8eaf6'
+		$theme === 'dark' ? '#080c10' : '#e8eaf6'
 	);
 </script>
 

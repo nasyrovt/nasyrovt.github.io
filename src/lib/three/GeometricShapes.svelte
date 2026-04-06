@@ -3,13 +3,8 @@
 	import { Float } from '@threlte/extras';
 	import { theme } from '$lib/stores/theme';
 
-	let wireColor = $derived(
-		$theme === 'strangerThings' ? '#e53e3e' : $theme === 'dark' ? '#81e6d9' : '#667eea'
-	);
-
-	let accentColor = $derived(
-		$theme === 'strangerThings' ? '#fc8181' : $theme === 'dark' ? '#f6ad55' : '#ed8936'
-	);
+	let wireColor = $derived($theme === 'dark' ? '#81e6d9' : '#667eea');
+	let accentColor = $derived($theme === 'dark' ? '#f6ad55' : '#ed8936');
 </script>
 
 <Float floatIntensity={2} speed={2}>

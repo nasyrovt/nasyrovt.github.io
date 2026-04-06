@@ -18,6 +18,11 @@
 
 	function positionTooltip() {
 		if (!cardEl) return;
+		if (window.innerWidth < 640) {
+			tooltipStyle = '';
+			arrowOnLeft = true;
+			return;
+		}
 		const rect = cardEl.getBoundingClientRect();
 		const viewportWidth = window.innerWidth;
 
@@ -86,7 +91,7 @@
 		class="tooltip"
 		class:arrow-left={arrowOnLeft}
 		class:arrow-right={!arrowOnLeft}
-		style="{tooltipStyle} width:{TOOLTIP_WIDTH}px;"
+		style={tooltipStyle ? `${tooltipStyle} width:${TOOLTIP_WIDTH}px;` : ''}
 		onclick={(e) => e.stopPropagation()}
 	>
 		<h3 class="tooltip-title">{project.title}</h3>
@@ -295,5 +300,22 @@
 
 	.github-btn:hover {
 		opacity: 0.85;
+	}
+
+	@media (max-width: 639px) {
+		.tooltip {
+			position: fixed;
+			inset: auto 0 0 0;
+			transform: none;
+			width: 100%;
+			max-height: 60vh;
+			overflow-y: auto;
+			border-radius: 4px 4px 0 0;
+			z-index: 500;
+		}
+
+		.tooltip::before {
+			display: none;
+		}
 	}
 </style>

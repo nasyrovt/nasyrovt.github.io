@@ -2,9 +2,7 @@
 	import { T } from '@threlte/core';
 	import { theme } from '$lib/stores/theme';
 
-	let lightColor = $derived(
-		$theme === 'strangerThings' ? '#e53e3e' : $theme === 'dark' ? '#81e6d9' : '#667eea'
-	);
+	let lightColor = $derived($theme === 'dark' ? '#81e6d9' : '#667eea');
 </script>
 
 <T.AmbientLight intensity={0.4} />

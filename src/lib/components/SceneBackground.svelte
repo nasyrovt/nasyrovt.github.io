@@ -11,9 +11,7 @@
 	});
 
 	let bg = $derived(
-		$theme === 'strangerThings'
-			? 'radial-gradient(ellipse at 30% 50%, #200000 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, #150000 0%, transparent 50%), #080808'
-			: $theme === 'dark'
+		$theme === 'dark'
 			? 'radial-gradient(ellipse at 18% 55%, #071020 0%, transparent 52%), radial-gradient(ellipse at 82% 22%, #0d0820 0%, transparent 48%), radial-gradient(ellipse at 55% 85%, #050c14 0%, transparent 44%), #000000'
 			: '#f0f2f8'
 	);

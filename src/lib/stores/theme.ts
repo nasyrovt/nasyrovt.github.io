@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import type { Theme } from '$lib/types';
 
-const THEMES: Theme[] = ['light', 'dark', 'strangerThings'];
+const THEMES: Theme[] = ['light', 'dark'];
 const STORAGE_KEY = 'portfolio-theme';
 
 function createThemeStore() {

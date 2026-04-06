@@ -29,19 +29,10 @@
 	font-display: swap;
 	src: url('/fonts/ibm-plex-sans-700.woff2') format('woff2');
 }
-@font-face {
-	font-family: 'Benguiat';
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url('/fonts/Benguiat-Bold.woff2') format('woff2');
-}
-
 /* ── Theme: Light (default) ── */
 :root {
 	--font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	--font-heading: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-	--font-stranger: 'Benguiat', 'IBM Plex Sans', serif;
 	--font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
 	--color-primary: #5a67d8;
@@ -103,47 +94,6 @@
 	--threlte-color-accent: #d42870;
 }
 
-/* ── Theme: Stranger Things ── */
-[data-theme='strangerThings'] {
-	--color-primary: #e53e3e;
-	--color-shadow: rgba(229, 62, 62, 0.25);
-	--color-secondary: #e53e3e;
-	--color-background: #0a0a0a;
-	--color-background-themes: #1a0a0a;
-	--color-text: #e2e8f0;
-	--color-text-muted: #a0aec0;
-	--color-heading: #e53e3e;
-	--color-muted: #718096;
-
-	--gradient-blue: radial-gradient(#ba230d, #520506);
-	--gradient-orange: radial-gradient(#ba230d, #520506);
-	--gradient-pink: radial-gradient(#ba230d, #520506);
-	--gradient-purple: radial-gradient(#ba230d, #520506);
-	--gradient-gray: radial-gradient(#ba230d, #520506);
-	--gradient-black: radial-gradient(#ba230d, #520506);
-	--gradient-red: radial-gradient(#ba230d, #520506);
-	--gradient-yellow: radial-gradient(#ba230d, #520506);
-	--gradient-green: radial-gradient(#ba230d, #520506);
-	--gradient-indigo: radial-gradient(#ba230d, #520506);
-	--gradient-teal: radial-gradient(#ba230d, #520506);
-	--gradient-dark-indigo: radial-gradient(#ba230d, #520506);
-
-	--threlte-color-primary: #e53e3e;
-	--threlte-color-secondary: #ba230d;
-	--threlte-color-accent: #fc8181;
-}
-
-/* ── Stranger Things heading glow ── */
-[data-theme='strangerThings'] h1,
-[data-theme='strangerThings'] h2,
-[data-theme='strangerThings'] h3 {
-	font-family: var(--font-stranger);
-	text-shadow:
-		0 0 10px rgba(229, 62, 62, 0.8),
-		0 0 20px rgba(229, 62, 62, 0.6),
-		0 0 40px rgba(229, 62, 62, 0.4),
-		0 0 80px rgba(229, 62, 62, 0.2);
-}
 
 /* ── Base styles ── */
 *,

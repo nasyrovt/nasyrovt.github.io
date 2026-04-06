@@ -6,7 +6,6 @@
 	import ProfessionalProjectsSection from '$lib/components/ProfessionalProjectsSection.svelte';
 	import AboutMe from '$lib/components/AboutMe.svelte';
 	import PublicationsSection from '$lib/components/PublicationsSection.svelte';
-	import HireEnd from '$lib/components/HireEnd.svelte';
 	import { reachableNodes } from '$lib/stores/blueprintGraph';
 	import { siteMetadata } from '$lib/data/site';
 
@@ -23,7 +22,7 @@
 		const SECTIONS = [
 			{ id: 'about',             name: 'C++'               },
 			{ id: 'professional',      name: 'Unreal Engine'     },
-			{ id: 'personal-projects', name: 'Want to hire me?'  },
+			{ id: 'personal-projects', name: 'Have a good one!'  },
 		];
 
 		function getDocTop(el: HTMLElement) {
@@ -58,4 +57,3 @@
 {#if $reachableNodes.has('fn-prof')}<ProfessionalProjectsSection projects={data.professionalProjects} />{/if}
 {#if $reachableNodes.has('fn-pers')}<ProjectsSection projects={data.projects} title="Personal Projects" id="personal-projects" />{/if}
 {#if $reachableNodes.has('fn-pub')}<PublicationsSection />{/if}
-<HireEnd />

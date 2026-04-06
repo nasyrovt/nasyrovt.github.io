@@ -6,4 +6,4 @@
 	let camY = $derived(-$scrollY * 0.0015);
 </script>
 
-<T.PerspectiveCamera makeDefault position={[0, camY, 5]} fov={60} />
+<T.PerspectiveCamera makeDefault position={[0, camY, 7]} fov={60} />
