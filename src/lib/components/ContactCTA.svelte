@@ -12,7 +12,7 @@
 		<p class="cta-text">Feel free to reach out via any of the channels below.</p>
 
 		<div class="cta-links">
-			<a href="mailto:nasyrovt@example.com" class="cta-link">
+			<a href="mailto:tahanasyrov@gmail.com" class="cta-link">
 				<span>Email</span>
 			</a>
 			<a
