@@ -53,30 +53,10 @@
 		margin-bottom: 12rem;
 		background: linear-gradient(
 			135deg,
-			color-mix(in srgb, var(--color-background-themes) 85%, var(--color-secondary)) 0%,
-			var(--color-background-themes) 45%,
-			color-mix(in srgb, var(--color-background-themes) 90%, var(--color-primary)) 100%
+			color-mix(in srgb, var(--color-background-themes) 88%, var(--color-primary)) 0%,
+			var(--color-background-themes) 50%,
+			color-mix(in srgb, var(--color-background-themes) 88%, var(--color-secondary)) 100%
 		);
-	}
-
-	.projects-section::before {
-		content: '';
-		position: absolute;
-		inset: 0 0 auto 0;
-		height: 80px;
-		background: linear-gradient(to bottom, transparent, var(--color-background-themes));
-		pointer-events: none;
-		z-index: 2;
-	}
-
-	.projects-section::after {
-		content: '';
-		position: absolute;
-		inset: auto 0 0 0;
-		height: 80px;
-		background: linear-gradient(to top, transparent, var(--color-background-themes));
-		pointer-events: none;
-		z-index: 2;
 	}
 
 	.container {
